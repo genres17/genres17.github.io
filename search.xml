@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>c++ map的遍历方式</title>
+    <url>/2021/03/08/c-map-de-san-chong-bian-li-fang-shi/</url>
+    <content><![CDATA[<p>c++ map的遍历方式主要包括迭代器遍历和高级for循环遍历</p>
+<h4 id="迭代器遍历"><a href="#迭代器遍历" class="headerlink" title="迭代器遍历"></a>迭代器遍历</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;map&gt;
+using namespace std;
+
+int main()&#123;
+    map&lt;int,int&gt; m;
+     for (int i &#x3D; 0; i &lt; 10; i++)&#123;
+        m[i] &#x3D; i*i;
+    &#125;
+    map&lt;int,int&gt;::iterator iter;
+    iter &#x3D; m.begin();
+    &#x2F;&#x2F; while循环方式
+    while(iter !&#x3D; m.end())&#123;
+        cout &lt;&lt; iter-&gt;first &lt;&lt; &quot;-&quot; &lt;&lt; iter-&gt;second &lt;&lt; endl;
+        iter++;
+    &#125;
+    &#x2F;&#x2F; 普通for循环方式
+     for (iter &#x3D; m.begin();iter !&#x3D; m.end(); iter++)&#123;
+        cout &lt;&lt; iter-&gt;first &lt;&lt; &quot;-&quot; &lt;&lt; iter-&gt;second &lt;&lt; endl;
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="高级for循环"><a href="#高级for循环" class="headerlink" title="高级for循环"></a>高级for循环</h4><p>注意使用高级for循环时，auto 后面跟着的是引用遍历，不要忘记引用符号，访问键值对时是使用.而不是-&gt;</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">for(auto &amp;it : m)&#123;
+    cout &lt;&lt; it.first &lt;&lt; &quot;-&quot; &lt;&lt; it.second &lt;&lt;endl;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+]]></content>
+      <categories>
+        <category>program language</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/02/27/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
