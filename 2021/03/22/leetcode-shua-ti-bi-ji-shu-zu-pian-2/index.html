@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="numpy学习笔记1, genres的小窝">
+    <meta name="keywords" content="leetcode刷题笔记-数组篇（2）, genres的小窝">
     <meta name="description" content="这里是genres的小窝，记录着genres的随笔">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>numpy学习笔记1 | genres的小窝</title>
+    <title>leetcode刷题笔记-数组篇（2） | genres的小窝</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/bitbug_favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">numpy学习笔记1</h1>
+                    <h1 class="description center-align post-title">leetcode刷题笔记-数组篇（2）</h1>
                 </div>
             </div>
         </div>
@@ -431,12 +431,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
                             </a>
                         
-                            <a href="/tags/NumPy/">
-                                <span class="chip bg-color">NumPy</span>
+                            <a href="/tags/Python/">
+                                <span class="chip bg-color">Python</span>
                             </a>
                         
                     </div>
@@ -447,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Mechine-Learning/" class="post-category">
-                                Mechine Learning
+                            <a href="/categories/leetcode/" class="post-category">
+                                leetcode
                             </a>
                         
                     </div>
@@ -460,28 +460,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-28
+                    2021-03-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-01
+                    2021-03-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    857
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    3 分
                 </div>
                 
 
@@ -504,146 +504,55 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="numpy模块介绍"><a href="#numpy模块介绍" class="headerlink" title="numpy模块介绍"></a>numpy模块介绍</h4><p>numpy是python中科学计算包，提供了大量关于数组（矩阵，掩码数组）及操作和数学运算的API。</p>
-<p>numpy的数组对象叫做ndarry，它对python原生的同类型n维数组进行了封装，为了保证性能都是在本地进行编译后再执行的。</p>
-<p>numpy数组和python原生Array区别：</p>
-<ul>
-<li>numpy数组创建时有固定大小，python的数组则可以动态增长 ，numpy更改大小实际上是进行的先新建一个数组然后复制过去并删除原数组过程。</li>
-<li>numpy数组中所有数据类型必须相同，但是python数组中则可以不同 。</li>
-<li>numpy数组支持封装好的高级数学和其他操作的接口，运行速度效率比python数组更高。</li>
-</ul>
-<p>ufc是numpy的通函数，是针对ndarray逐元素操作的函数，支持数组广播，类型转换等功能。</p>
-<h4 id="ndarray的属性"><a href="#ndarray的属性" class="headerlink" title="ndarray的属性"></a>ndarray的属性</h4><p>numpy当中维度被称为轴，每个轴表示该维度方向上有几个元素。例如常见的二维数组中，第0个维度数值表示数组横向元素的个数，第1个维度数值表示数组纵向元素的个数。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+                <h4 id="27题-删除元素"><a href="#27题-删除元素" class="headerlink" title="27题 删除元素"></a>27题 删除元素</h4><p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<p>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<p>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>int len = removeElement(nums, val);</p>
+<p>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p>
+<p>示例 1：</p>
+<p>输入：nums = [3,2,2,3], val = 3<br>输出：2, nums = [2,2]<br>解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。</p>
+<p>示例 2：</p>
+<p>输入：nums = [0,1,2,2,3,0,4,2], val = 2<br>输出：5, nums = [0,1,4,0,3]<br>解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。注意这五个元素可为任意顺序。你不需要考虑数组中超出新长度后面的元素。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><h5 id="暴力求解"><a href="#暴力求解" class="headerlink" title="暴力求解"></a>暴力求解</h5><p>就是传统的线性表删除方式，这里记录回顾一下（不使用vector自带方法）</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;
+        int size &#x3D; nums.size();
+        for(int i&#x3D;0;i&lt;size;i++)&#123;
+            if(nums[i]&#x3D;&#x3D;val)&#123;
+                for(int j&#x3D;i+1;j&lt;size;j++)nums[j-1]&#x3D;nums[j];
+                i--; &#x2F;&#x2F; 这里i需要-1，因为删除了元素后要回退一下检验代替者是否也要删
+                size--;
+            &#125;
+        &#125;
+        return size;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-a <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-a
-<span class="token triple-quoted-string string">"""
-4表示横向有4个元素，3表示纵向有3个元素
-array([[ 0,  1,  2],
-       [ 3,  4,  5],
-       [ 6,  7,  8],
-       [ 9, 10, 11]])
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>**注意在使用vector的时候，因为传统的删除操作会改变目标vector的大小，但是nums.size()取得的仍是原来的长度，所以最好用一个新的变量来存储 **</p>
+<h5 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h5><p>双指针法将时间复杂度O(n^2)的解法优化为 O(n)的解法。也就是降一个数量级</p>
+<p><img src="C:\Users\ASUS\Pictures\1.gif"></p>
+<p>设置一个慢指针，通过<strong>nums[slowIndex++] = nums[fastIndex];</strong> 一开始与快指针同步且不改变当前元素值，当遇到删除值的时候，就让慢指针停下而让快指针继续前进，如果再遇到非删除值的时候，慢指针的值就直接变成非删除的值了。</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">class Solution &#123;
+public:
+    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;
+        int slowIndex &#x3D; 0; 
+        for (int fastIndex &#x3D; 0; fastIndex &lt; nums.size(); fastIndex++) &#123;  
+            if (val !&#x3D; nums[fastIndex]) &#123; 
+                nums[slowIndex++] &#x3D; nums[fastIndex]; 
+            &#125;
+        &#125;
+        return slowIndex;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>对于ndarray来说，常用属性如下：</p>
-<ul>
-<li><p><strong>ndarray.ndim</strong> - 数组的轴（维度）的个数。在Python世界中，维度的数量被称为rank。</p>
-</li>
-<li><p><strong>ndarray.shape</strong> - 数组的维度。这是一个整数的元组，表示每个维度中数组的大小。对于有 <em>n</em> 行和 <em>m</em> 列的矩阵，<code>shape</code> 将是 <code>(n,m)</code>。因此，<code>shape</code> 元组的长度就是rank或维度的个数 <code>ndim</code>。</p>
-</li>
-<li><p><strong>ndarray.size</strong> - 数组元素的总数。这等于 <code>shape</code> 的元素的乘积。</p>
-</li>
-<li><p><strong>ndarray.dtype</strong> - 一个描述数组中元素类型的对象。可以使用标准的Python类型创建或指定dtype。另外NumPy提供它自己的类型。例如numpy.int32、numpy.int16和numpy.float64。</p>
-</li>
-<li><p><strong>ndarray.itemsize</strong> - 数组中每个元素的字节大小。例如，元素为 <code>float64</code> 类型的数组的 <code>itemsize</code> 为8（=64/8），而 <code>complex32</code> 类型的数组的 <code>itemsize</code> 为4（=32/8）。它等于 <code>ndarray.dtype.itemsize</code> </p>
-</li>
-<li><p><strong>ndarray.data</strong> - 指向数据存储区域的指针，一般用不上</p>
-</li>
-<li><p><strong>ndarray.strides</strong> - 一个跨度元组，其中的整数指的是为了前进到当前维度下一个元素需要”跨过”的字节数,即strides字段，对底层为一维数组内存存储区进行多维结构解释</p>
-</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-
-a<span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span>a<span class="token punctuation">.</span>shape<span class="token punctuation">,</span>a<span class="token punctuation">.</span>ndim<span class="token punctuation">,</span>a<span class="token punctuation">.</span>strides<span class="token punctuation">,</span>a<span class="token punctuation">.</span>data<span class="token punctuation">,</span>a<span class="token punctuation">.</span>size<span class="token punctuation">,</span>a<span class="token punctuation">.</span>itemsize<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span>b<span class="token punctuation">.</span>shape<span class="token punctuation">,</span>b<span class="token punctuation">.</span>ndim<span class="token punctuation">,</span>b<span class="token punctuation">.</span>strides<span class="token punctuation">,</span>b<span class="token punctuation">.</span>data<span class="token punctuation">,</span>b<span class="token punctuation">.</span>size<span class="token punctuation">,</span>b<span class="token punctuation">.</span>itemsize<span class="token punctuation">)</span>
-<span class="token triple-quoted-string string">'''
-int32 (4,) 1 (4,) &lt;memory at 0x000001D5032E4D08> 4 4
-int32 (2, 2) 2 (8, 4) &lt;memory at 0x000001D503CC2D68> 4 4
-'''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>注意，len()函数对于一个ndarray对象求长度，取到的是第0个维度的值</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 这个函数用法跟pytorch里的不太一样，pytorch可以不带括号（元组形式）</span>
-x<span class="token punctuation">.</span>shape<span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span>x<span class="token punctuation">.</span>size
-<span class="token triple-quoted-string string">"""
-((5, 3, 4), 5, 60)
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="ndarray的创建"><a href="#ndarray的创建" class="headerlink" title="ndarray的创建"></a>ndarray的创建</h4><ol>
-<li>可以在array当中传入python的列表，元组，但是不能传入多个数字来创建array</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-
-a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1.1</span><span class="token punctuation">,</span><span class="token number">2.2</span><span class="token punctuation">,</span><span class="token number">3.3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-a<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span>b<span class="token punctuation">.</span>dtype
-<span class="token triple-quoted-string string">"""
-(dtype('int32'), dtype('float64'))
-"""</span>
-c <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
-<span class="token triple-quoted-string string">"""
-ValueError                                Traceback (most recent call last)
-&lt;ipython-input-2-159ad3c0c19b> in &lt;module>
-----> 1 c = np.array(1,2,3,4)
-
-ValueError: only 2 non-keyword arguments accepted
-"""</span>
-d <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span><span class="token builtin">complex</span><span class="token punctuation">)</span> <span class="token comment"># 可以传入高维矩阵创建高维数组，还可以创建时指定类型</span>
-d
-<span class="token triple-quoted-string string">"""
-array([[1.+0.j, 2.+0.j, 3.+0.j],
-       [3.+0.j, 4.+0.j, 5.+0.j]])
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li><p>使用内置函数创建一些指定大小的数组，用特定数值先填充</p>
-<p>函数<code>zeros</code>创建一个由0组成的数组，函数 <code>ones</code>创建一个完整的数组，函数<code>empty</code> 创建一个数组，其初始内容是随机的，取决于内存的状态。默认情况下，创建的数组的dtype是 <code>float64</code> 类型的。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-y <span class="token operator">=</span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-z <span class="token operator">=</span> np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z
-<span class="token triple-quoted-string string">"""
-(array([[[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]],
- 
-        [[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]],
- 
-        [[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]],
- 
-        [[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]],
- 
-        [[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]]]),
- array([[1.],
-        [1.]]),
- array([[[0., 0.]],
- 
-        [[0., 0.]],
- 
-        [[0., 0.]]]))
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>np.arange是返回一个范围序列，按照给定的step来划分，np.linspace也是返回一个范围序列，不同的是指定的不是step而是序列元素个数</p>
-<p>因为arange函数当与浮点参数一起使用时，由于有限的浮点精度，通常不可能预测所获得的元素的数量。出于这个原因，通常最好使用<code>linspace</code>函数来接收我们想要的元素数量的函数</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">c <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-d <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-c<span class="token punctuation">,</span>d
-<span class="token triple-quoted-string string">"""
-(array([0, 3, 6, 9]), array([ 0.,  6., 12.]))
-"""</span>
-e <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">0.3</span><span class="token punctuation">)</span>
-f <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span>
-e<span class="token punctuation">,</span>f
-<span class="token triple-quoted-string string">"""
-(array([0. , 0.3, 0.6, 0.9, 1.2, 1.5, 1.8]),
- array([0.        , 0.22222222, 0.44444444, 0.66666667, 0.88888889,
-        1.11111111, 1.33333333, 1.55555556, 1.77777778, 2.        ]))
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-</li>
+<h4 id="今日做题总结"><a href="#今日做题总结" class="headerlink" title="今日做题总结"></a>今日做题总结</h4><ol>
+<li>忘记了传统线性表最基础的删除方法（写了好久才写对，以后要多看一下）</li>
+<li>双指针操作线性标是个常见的解决方法，要多理解学习</li>
 </ol>
 
                 
@@ -671,7 +580,7 @@ e<span class="token punctuation">,</span>f
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://genres17.github.io/2021/02/28/numpy-xue-xi-bi-ji-1/">https://genres17.github.io/2021/02/28/numpy-xue-xi-bi-ji-1/</a>
+                    <a href="https://genres17.github.io/2021/03/22/leetcode-shua-ti-bi-ji-shu-zu-pian-2/">https://genres17.github.io/2021/03/22/leetcode-shua-ti-bi-ji-shu-zu-pian-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -709,12 +618,12 @@ e<span class="token punctuation">,</span>f
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
                                 </a>
                             
-                                <a href="/tags/NumPy/">
-                                    <span class="chip bg-color">NumPy</span>
+                                <a href="/tags/Python/">
+                                    <span class="chip bg-color">Python</span>
                                 </a>
                             
                         </div>
@@ -885,7 +794,7 @@ e<span class="token punctuation">,</span>f
         repo: 'Blog-Comment-storage',
         owner: 'genres17',
         admin: "genres17",
-        id: '2021-02-28T22-26-49',
+        id: '2021-03-22T09-52-06',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -913,17 +822,18 @@ e<span class="token punctuation">,</span>f
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/01/numpy-shu-zu-xue-xi-2/">
+                <a href="/2021/03/22/leetcode-shua-ti-bi-ji-shu-zu-pian-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="numpy学习笔记2">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="leetcode刷题笔记-数组篇（2）">
                         
-                        <span class="card-title">numpy学习笔记2</span>
+                        <span class="card-title">leetcode刷题笔记-数组篇（2）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -933,30 +843,31 @@ e<span class="token punctuation">,</span>f
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Mechine-Learning/" class="post-category">
-                                    Mechine Learning
+                            <a href="/categories/leetcode/" class="post-category">
+                                    leetcode
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
-                    <a href="/tags/NumPy/">
-                        <span class="chip bg-color">NumPy</span>
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
                 </div>
@@ -970,13 +881,13 @@ e<span class="token punctuation">,</span>f
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/27/hello-world/">
+                <a href="/2021/03/21/leetcode-shua-ti-bi-ji-shu-zu-pian-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="leetcode刷题笔记-数组篇（1）">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">leetcode刷题笔记-数组篇（1）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -987,15 +898,31 @@ e<span class="token punctuation">,</span>f
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-21
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            genres
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/leetcode/" class="post-category">
+                                    leetcode
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
                 </div>
                 
             </div>

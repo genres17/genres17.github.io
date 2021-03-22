@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/02/27/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>c++ map的遍历方式</title>
     <url>/2021/03/08/c-map-de-san-chong-bian-li-fang-shi/</url>
     <content><![CDATA[<p>c++ map的遍历方式主要包括迭代器遍历和高级for循环遍历</p>
@@ -56,6 +38,150 @@ int main()&#123;
       </categories>
       <tags>
         <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/02/27/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>leetcode刷题笔记-数组篇（1）</title>
+    <url>/2021/03/21/leetcode-shua-ti-bi-ji-shu-zu-pian-1/</url>
+    <content><![CDATA[<h4 id="35题-搜索插入的位置"><a href="#35题-搜索插入的位置" class="headerlink" title="35题 搜索插入的位置"></a>35题 搜索插入的位置</h4><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<p>示例 1:</p>
+<p>输入: [1,3,5,6], 5<br>输出: 2</p>
+<p>示例 2:</p>
+<p>输入: [1,3,5,6], 2<br>输出: 1</p>
+<p>示例 3:</p>
+<p>输入: [1,3,5,6], 7<br>输出: 4</p>
+<p>示例 4:</p>
+<p>输入: [1,3,5,6], 0<br>输出: 0</p>
+<h4 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h4><p>数组是排过序的，因此可以考虑直接从左到右直接遍历处理，但是要注意因为查找的值不在原有的数组里而是在两数之间的话，需要通过数组的元素之间大小比较才能确定位置，因此把index=0的单独判断后再遍历，这样避免了数组下标越界的可能。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;
+        if(nums[0]&gt;&#x3D;target)&#123;
+            return 0;
+        &#125;
+        for(int i&#x3D;1; i&lt;nums.size(); i++)&#123;
+            if(nums[i]&#x3D;&#x3D;target)return i;
+            if(nums[i]&gt;target&amp;&amp;nums[i-1]&lt;target)return i;
+        &#125;
+        return nums.size(); &#x2F;&#x2F; 如果到最后都没判断到，说明插入的位置在数组之后
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h4><p>这道题目的前提是数组是有序数组，这也是使用二分查找的基础条件。</p>
+<p>以后<strong>「只要看到面试题里给出的数组是有序数组，都可以想一想是否可以使用二分法。」</strong></p>
+<p>同时题目还强调数组中无重复元素，因为一旦有重复元素，使用二分查找法返回的元素下表可能不是唯一的。</p>
+<h5 id="二分法的边界问题"><a href="#二分法的边界问题" class="headerlink" title="二分法的边界问题"></a>二分法的边界问题</h5><p>例如到底是 <code>while(left &lt; right)</code> 还是 <code>while(left &lt;= right)</code>，到底是<code>right = middle</code>呢，还是要<code>right = middle - 1</code>呢？</p>
+<p>这里的边界问题，涉及了一个循环不变量的问题，即：<strong>一个循环不变量是指在循环开始和循环中每一次迭代时永远为真的量，这意味着在循环中和循环结束时循环不变量和循环终止条件必须同时成立</strong></p>
+<p>上述纠结的边界问题，实际上针对了二分法边界的两种预先设定情况，即：**[left, right]<strong>和</strong>[left, right)**</p>
+<h5 id="对于第一种情况-left-right"><a href="#对于第一种情况-left-right" class="headerlink" title="对于第一种情况**[left, right]**"></a>对于第一种情况**[left, right]**</h5><p><strong>要写while(left &lt;= right)， right = middle - 1，因为当left==right时，仍然满足预先设定的区间条件，当更新right时，只有减去了middle-1才能满足区间条件</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">searchInsert</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nums<span class="token punctuation">:</span> List<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> target<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        length <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span>
+        left<span class="token punctuation">,</span>right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>length<span class="token operator">-</span><span class="token number">1</span>
+        <span class="token keyword">while</span> left<span class="token operator">&lt;=</span>right<span class="token punctuation">:</span>
+            mid <span class="token operator">=</span> left<span class="token operator">+</span><span class="token punctuation">(</span>right<span class="token operator">-</span>left<span class="token punctuation">)</span><span class="token operator">//</span><span class="token number">2</span> <span class="token comment"># 这步等价于(left+right)//2，这么写是为了防止left+right可能超过int上限（c++等语言注意）</span>
+            <span class="token keyword">if</span> nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">:</span> 
+                <span class="token keyword">return</span> mid
+            <span class="token keyword">elif</span> nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token operator">></span>target<span class="token punctuation">:</span>
+                right <span class="token operator">=</span> mid<span class="token operator">-</span><span class="token number">1</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                left <span class="token operator">=</span> mid<span class="token operator">+</span><span class="token number">1</span>
+        <span class="token keyword">if</span> right <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token number">0</span>
+        <span class="token keyword">elif</span> left <span class="token operator">==</span> length<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> length
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> left<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="对于第二种情况-left-right"><a href="#对于第二种情况-left-right" class="headerlink" title="对于第二种情况[left, right)"></a>对于第二种情况[left, right)</h5><p><strong>要写while (left &lt; right)， right = middle，因为right是开区间，left=right-1时正好满足区间的最后一个条件，right=middle更新的原理也是一样的</strong></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode刷题笔记-数组篇（2）</title>
+    <url>/2021/03/22/leetcode-shua-ti-bi-ji-shu-zu-pian-2/</url>
+    <content><![CDATA[<h4 id="27题-删除元素"><a href="#27题-删除元素" class="headerlink" title="27题 删除元素"></a>27题 删除元素</h4><p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<p>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<p>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>int len = removeElement(nums, val);</p>
+<p>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p>
+<p>示例 1：</p>
+<p>输入：nums = [3,2,2,3], val = 3<br>输出：2, nums = [2,2]<br>解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。</p>
+<p>示例 2：</p>
+<p>输入：nums = [0,1,2,2,3,0,4,2], val = 2<br>输出：5, nums = [0,1,4,0,3]<br>解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。注意这五个元素可为任意顺序。你不需要考虑数组中超出新长度后面的元素。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><h5 id="暴力求解"><a href="#暴力求解" class="headerlink" title="暴力求解"></a>暴力求解</h5><p>就是传统的线性表删除方式，这里记录回顾一下（不使用vector自带方法）</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;
+        int size &#x3D; nums.size();
+        for(int i&#x3D;0;i&lt;size;i++)&#123;
+            if(nums[i]&#x3D;&#x3D;val)&#123;
+                for(int j&#x3D;i+1;j&lt;size;j++)nums[j-1]&#x3D;nums[j];
+                i--; &#x2F;&#x2F; 这里i需要-1，因为删除了元素后要回退一下检验代替者是否也要删
+                size--;
+            &#125;
+        &#125;
+        return size;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>**注意在使用vector的时候，因为传统的删除操作会改变目标vector的大小，但是nums.size()取得的仍是原来的长度，所以最好用一个新的变量来存储 **</p>
+<h5 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h5><p>双指针法将时间复杂度O(n^2)的解法优化为 O(n)的解法。也就是降一个数量级</p>
+<p><img src="C:\Users\ASUS\Pictures\1.gif"></p>
+<p>设置一个慢指针，通过<strong>nums[slowIndex++] = nums[fastIndex];</strong> 一开始与快指针同步且不改变当前元素值，当遇到删除值的时候，就让慢指针停下而让快指针继续前进，如果再遇到非删除值的时候，慢指针的值就直接变成非删除的值了。</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">class Solution &#123;
+public:
+    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;
+        int slowIndex &#x3D; 0; 
+        for (int fastIndex &#x3D; 0; fastIndex &lt; nums.size(); fastIndex++) &#123;  
+            if (val !&#x3D; nums[fastIndex]) &#123; 
+                nums[slowIndex++] &#x3D; nums[fastIndex]; 
+            &#125;
+        &#125;
+        return slowIndex;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="今日做题总结"><a href="#今日做题总结" class="headerlink" title="今日做题总结"></a>今日做题总结</h4><ol>
+<li>忘记了传统线性表最基础的删除方法（写了好久才写对，以后要多看一下）</li>
+<li>双指针操作线性标是个常见的解决方法，要多理解学习</li>
+</ol>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -207,72 +333,8 @@ e<span class="token punctuation">,</span>f
         <category>Mechine Learning</category>
       </categories>
       <tags>
+        <tag>Python</tag>
         <tag>NumPy</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode刷题笔记-数组篇（1）</title>
-    <url>/2021/03/21/leetcode-shua-ti-bi-ji-shu-zu-pian-1/</url>
-    <content><![CDATA[<h4 id="35题-搜索插入的位置"><a href="#35题-搜索插入的位置" class="headerlink" title="35题 搜索插入的位置"></a>35题 搜索插入的位置</h4><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
-<p>你可以假设数组中无重复元素。</p>
-<p>示例 1:</p>
-<p>输入: [1,3,5,6], 5<br>输出: 2</p>
-<p>示例 2:</p>
-<p>输入: [1,3,5,6], 2<br>输出: 1</p>
-<p>示例 3:</p>
-<p>输入: [1,3,5,6], 7<br>输出: 4</p>
-<p>示例 4:</p>
-<p>输入: [1,3,5,6], 0<br>输出: 0</p>
-<h4 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h4><p>数组是排过序的，因此可以考虑直接从左到右直接遍历处理，但是要注意因为查找的值不在原有的数组里而是在两数之间的话，需要通过数组的元素之间大小比较才能确定位置，因此把index=0的单独判断后再遍历，这样避免了数组下标越界的可能。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;
-        if(nums[0]&gt;&#x3D;target)&#123;
-            return 0;
-        &#125;
-        for(int i&#x3D;1; i&lt;nums.size(); i++)&#123;
-            if(nums[i]&#x3D;&#x3D;target)return i;
-            if(nums[i]&gt;target&amp;&amp;nums[i-1]&lt;target)return i;
-        &#125;
-        return nums.size(); &#x2F;&#x2F; 如果到最后都没判断到，说明插入的位置在数组之后
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h4><p>这道题目的前提是数组是有序数组，这也是使用二分查找的基础条件。</p>
-<p>以后<strong>「只要看到面试题里给出的数组是有序数组，都可以想一想是否可以使用二分法。」</strong></p>
-<p>同时题目还强调数组中无重复元素，因为一旦有重复元素，使用二分查找法返回的元素下表可能不是唯一的。</p>
-<h5 id="二分法的边界问题"><a href="#二分法的边界问题" class="headerlink" title="二分法的边界问题"></a>二分法的边界问题</h5><p>例如到底是 <code>while(left &lt; right)</code> 还是 <code>while(left &lt;= right)</code>，到底是<code>right = middle</code>呢，还是要<code>right = middle - 1</code>呢？</p>
-<p>这里的边界问题，涉及了一个循环不变量的问题，即：<strong>一个循环不变量是指在循环开始和循环中每一次迭代时永远为真的量，这意味着在循环中和循环结束时循环不变量和循环终止条件必须同时成立</strong></p>
-<p>上述纠结的边界问题，实际上针对了二分法边界的两种预先设定情况，即：**[left, right]<strong>和</strong>[left, right)**</p>
-<h5 id="对于第一种情况-left-right"><a href="#对于第一种情况-left-right" class="headerlink" title="对于第一种情况**[left, right]**"></a>对于第一种情况**[left, right]**</h5><p><strong>要写while(left &lt;= right)， right = middle - 1，因为当left==right时，仍然满足预先设定的区间条件，当更新right时，只有减去了middle-1才能满足区间条件</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">searchInsert</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nums<span class="token punctuation">:</span> List<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> target<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
-        length <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span>
-        left<span class="token punctuation">,</span>right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>length<span class="token operator">-</span><span class="token number">1</span>
-        <span class="token keyword">while</span> left<span class="token operator">&lt;=</span>right<span class="token punctuation">:</span>
-            mid <span class="token operator">=</span> left<span class="token operator">+</span><span class="token punctuation">(</span>right<span class="token operator">-</span>left<span class="token punctuation">)</span><span class="token operator">//</span><span class="token number">2</span> <span class="token comment"># 这步等价于(left+right)//2，这么写是为了防止left+right可能超过int上限（c++等语言注意）</span>
-            <span class="token keyword">if</span> nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">:</span> 
-                <span class="token keyword">return</span> mid
-            <span class="token keyword">elif</span> nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token operator">></span>target<span class="token punctuation">:</span>
-                right <span class="token operator">=</span> mid<span class="token operator">-</span><span class="token number">1</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                left <span class="token operator">=</span> mid<span class="token operator">+</span><span class="token number">1</span>
-        <span class="token keyword">if</span> right <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token number">0</span>
-        <span class="token keyword">elif</span> left <span class="token operator">==</span> length<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> length
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> left<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h5 id="对于第二种情况-left-right"><a href="#对于第二种情况-left-right" class="headerlink" title="对于第二种情况[left, right)"></a>对于第二种情况[left, right)</h5><p><strong>要写while (left &lt; right)， right = middle，因为right是开区间，left=right-1时正好满足区间的最后一个条件，right=middle更新的原理也是一样的</strong></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>c++</tag>
       </tags>
   </entry>
   <entry>
@@ -447,8 +509,8 @@ Out<span class="token punctuation">[</span><span class="token number">29</span><
         <category>Mechine Learning</category>
       </categories>
       <tags>
-        <tag>NumPy</tag>
         <tag>Python</tag>
+        <tag>NumPy</tag>
       </tags>
   </entry>
 </search>
