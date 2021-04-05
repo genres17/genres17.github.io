@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker学习笔记一概述</title>
+    <url>/2021/04/05/dcoker-xue-xi-1/</url>
+    <content><![CDATA[<h4 id="Docker解决的问题"><a href="#Docker解决的问题" class="headerlink" title="Docker解决的问题"></a>Docker解决的问题</h4><p>docker为程序提供了一些轻量级的容器，这些容器会存储着程序运行所需要的执行环境，使用docker就可以使应用程序和基础架构分开</p>
+<ul>
+<li>保证程序在本地开发和服务器运行环境一致性</li>
+<li>实现程序的快速部署和分发</li>
+</ul>
+<h4 id="Docker-Engine结构"><a href="#Docker-Engine结构" class="headerlink" title="Docker Engine结构"></a>Docker Engine结构</h4><p>Docker Engine是一个包括以下组件的CS应用程序：</p>
+<ul>
+<li>server(docker daemon)- 一个长时间运行的守护进程</li>
+<li>REST API - 一套用与docker daemon通信并指示其执行操作的接口</li>
+<li>客户端 - 命令接口CLI（command line interface）</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617621087/my_blog/docker%E7%BB%93%E6%9E%84%E5%9B%BE_xzuy2b.png" alt="image-20210401212734977"></p>
+<p>CLI理用Docker命令通过REST API直接控制Docker Daemon,而Docker Daemon负责对Docker对象（容器，镜像，网络，数据卷）管理<img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617621076/my_blog/docker%E7%BB%93%E6%9E%84%E6%A6%82%E8%A7%88_f8uzbw.png" alt="image-20210401214821499"></p>
+<p>Docker结构总结：</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617621094/my_blog/docker%E7%BB%93%E6%9E%84%E6%80%BB%E7%BB%93_vxscvu.png" alt="image"></p>
+<h4 id="Docker底层技术概述"><a href="#Docker底层技术概述" class="headerlink" title="Docker底层技术概述"></a>Docker底层技术概述</h4><ol>
+<li><p>Docker用的是go语言实现的</p>
+</li>
+<li><p>Docker理用的是Linux内核的几个特性来实现的，Windows上能使用Docker是因为使用是虚拟化的技术</p>
+<ul>
+<li>利用的是Linux的命名空间（Namespaces)</li>
+<li>利用的是Linux的控制组（control Groups）</li>
+<li>利用的是Linux的联合文件系统（Union File Systems）</li>
+</ul>
+</li>
+<li><p>容器格式</p>
+<p>Docker引擎将命名空间，控制组，联合文件系统打成一个包称为容器格式，它是Docker创建容器和对容器管理的单位。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+  </entry>
+  <entry>
     <title>c++ map的遍历方式</title>
     <url>/2021/03/08/c-map-de-san-chong-bian-li-fang-shi/</url>
     <content><![CDATA[<p>c++ map的遍历方式主要包括迭代器遍历和高级for循环遍历</p>
@@ -268,159 +305,6 @@ public:
       </tags>
   </entry>
   <entry>
-    <title>numpy学习笔记1</title>
-    <url>/2021/02/28/numpy-xue-xi-bi-ji-1/</url>
-    <content><![CDATA[<h4 id="numpy模块介绍"><a href="#numpy模块介绍" class="headerlink" title="numpy模块介绍"></a>numpy模块介绍</h4><p>numpy是python中科学计算包，提供了大量关于数组（矩阵，掩码数组）及操作和数学运算的API。</p>
-<p>numpy的数组对象叫做ndarry，它对python原生的同类型n维数组进行了封装，为了保证性能都是在本地进行编译后再执行的。</p>
-<p>numpy数组和python原生Array区别：</p>
-<ul>
-<li>numpy数组创建时有固定大小，python的数组则可以动态增长 ，numpy更改大小实际上是进行的先新建一个数组然后复制过去并删除原数组过程。</li>
-<li>numpy数组中所有数据类型必须相同，但是python数组中则可以不同 。</li>
-<li>numpy数组支持封装好的高级数学和其他操作的接口，运行速度效率比python数组更高。</li>
-</ul>
-<p>ufc是numpy的通函数，是针对ndarray逐元素操作的函数，支持数组广播，类型转换等功能。</p>
-<h4 id="ndarray的属性"><a href="#ndarray的属性" class="headerlink" title="ndarray的属性"></a>ndarray的属性</h4><p>numpy当中维度被称为轴，每个轴表示该维度方向上有几个元素。例如常见的二维数组中，第0个维度数值表示数组横向元素的个数，第1个维度数值表示数组纵向元素的个数。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-
-a <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-a
-<span class="token triple-quoted-string string">"""
-4表示横向有4个元素，3表示纵向有3个元素
-array([[ 0,  1,  2],
-       [ 3,  4,  5],
-       [ 6,  7,  8],
-       [ 9, 10, 11]])
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>对于ndarray来说，常用属性如下：</p>
-<ul>
-<li><p><strong>ndarray.ndim</strong> - 数组的轴（维度）的个数。在Python世界中，维度的数量被称为rank。</p>
-</li>
-<li><p><strong>ndarray.shape</strong> - 数组的维度。这是一个整数的元组，表示每个维度中数组的大小。对于有 <em>n</em> 行和 <em>m</em> 列的矩阵，<code>shape</code> 将是 <code>(n,m)</code>。因此，<code>shape</code> 元组的长度就是rank或维度的个数 <code>ndim</code>。</p>
-</li>
-<li><p><strong>ndarray.size</strong> - 数组元素的总数。这等于 <code>shape</code> 的元素的乘积。</p>
-</li>
-<li><p><strong>ndarray.dtype</strong> - 一个描述数组中元素类型的对象。可以使用标准的Python类型创建或指定dtype。另外NumPy提供它自己的类型。例如numpy.int32、numpy.int16和numpy.float64。</p>
-</li>
-<li><p><strong>ndarray.itemsize</strong> - 数组中每个元素的字节大小。例如，元素为 <code>float64</code> 类型的数组的 <code>itemsize</code> 为8（=64/8），而 <code>complex32</code> 类型的数组的 <code>itemsize</code> 为4（=32/8）。它等于 <code>ndarray.dtype.itemsize</code> </p>
-</li>
-<li><p><strong>ndarray.data</strong> - 指向数据存储区域的指针，一般用不上</p>
-</li>
-<li><p><strong>ndarray.strides</strong> - 一个跨度元组，其中的整数指的是为了前进到当前维度下一个元素需要”跨过”的字节数,即strides字段，对底层为一维数组内存存储区进行多维结构解释</p>
-</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-
-a<span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span>a<span class="token punctuation">.</span>shape<span class="token punctuation">,</span>a<span class="token punctuation">.</span>ndim<span class="token punctuation">,</span>a<span class="token punctuation">.</span>strides<span class="token punctuation">,</span>a<span class="token punctuation">.</span>data<span class="token punctuation">,</span>a<span class="token punctuation">.</span>size<span class="token punctuation">,</span>a<span class="token punctuation">.</span>itemsize<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span>b<span class="token punctuation">.</span>shape<span class="token punctuation">,</span>b<span class="token punctuation">.</span>ndim<span class="token punctuation">,</span>b<span class="token punctuation">.</span>strides<span class="token punctuation">,</span>b<span class="token punctuation">.</span>data<span class="token punctuation">,</span>b<span class="token punctuation">.</span>size<span class="token punctuation">,</span>b<span class="token punctuation">.</span>itemsize<span class="token punctuation">)</span>
-<span class="token triple-quoted-string string">'''
-int32 (4,) 1 (4,) &lt;memory at 0x000001D5032E4D08> 4 4
-int32 (2, 2) 2 (8, 4) &lt;memory at 0x000001D503CC2D68> 4 4
-'''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>注意，len()函数对于一个ndarray对象求长度，取到的是第0个维度的值</strong></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 这个函数用法跟pytorch里的不太一样，pytorch可以不带括号（元组形式）</span>
-x<span class="token punctuation">.</span>shape<span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span>x<span class="token punctuation">.</span>size
-<span class="token triple-quoted-string string">"""
-((5, 3, 4), 5, 60)
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="ndarray的创建"><a href="#ndarray的创建" class="headerlink" title="ndarray的创建"></a>ndarray的创建</h4><ol>
-<li>可以在array当中传入python的列表，元组，但是不能传入多个数字来创建array</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-
-a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1.1</span><span class="token punctuation">,</span><span class="token number">2.2</span><span class="token punctuation">,</span><span class="token number">3.3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-a<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span>b<span class="token punctuation">.</span>dtype
-<span class="token triple-quoted-string string">"""
-(dtype('int32'), dtype('float64'))
-"""</span>
-c <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
-<span class="token triple-quoted-string string">"""
-ValueError                                Traceback (most recent call last)
-&lt;ipython-input-2-159ad3c0c19b> in &lt;module>
-----> 1 c = np.array(1,2,3,4)
-
-ValueError: only 2 non-keyword arguments accepted
-"""</span>
-d <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span><span class="token builtin">complex</span><span class="token punctuation">)</span> <span class="token comment"># 可以传入高维矩阵创建高维数组，还可以创建时指定类型</span>
-d
-<span class="token triple-quoted-string string">"""
-array([[1.+0.j, 2.+0.j, 3.+0.j],
-       [3.+0.j, 4.+0.j, 5.+0.j]])
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="2">
-<li><p>使用内置函数创建一些指定大小的数组，用特定数值先填充</p>
-<p>函数<code>zeros</code>创建一个由0组成的数组，函数 <code>ones</code>创建一个完整的数组，函数<code>empty</code> 创建一个数组，其初始内容是随机的，取决于内存的状态。默认情况下，创建的数组的dtype是 <code>float64</code> 类型的。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-y <span class="token operator">=</span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-z <span class="token operator">=</span> np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z
-<span class="token triple-quoted-string string">"""
-(array([[[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]],
- 
-        [[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]],
- 
-        [[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]],
- 
-        [[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]],
- 
-        [[0., 0., 0., 0.],
-         [0., 0., 0., 0.],
-         [0., 0., 0., 0.]]]),
- array([[1.],
-        [1.]]),
- array([[[0., 0.]],
- 
-        [[0., 0.]],
- 
-        [[0., 0.]]]))
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>np.arange是返回一个范围序列，按照给定的step来划分，np.linspace也是返回一个范围序列，不同的是指定的不是step而是序列元素个数</p>
-<p>因为arange函数当与浮点参数一起使用时，由于有限的浮点精度，通常不可能预测所获得的元素的数量。出于这个原因，通常最好使用<code>linspace</code>函数来接收我们想要的元素数量的函数</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">c <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-d <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-c<span class="token punctuation">,</span>d
-<span class="token triple-quoted-string string">"""
-(array([0, 3, 6, 9]), array([ 0.,  6., 12.]))
-"""</span>
-e <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">0.3</span><span class="token punctuation">)</span>
-f <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span>
-e<span class="token punctuation">,</span>f
-<span class="token triple-quoted-string string">"""
-(array([0. , 0.3, 0.6, 0.9, 1.2, 1.5, 1.8]),
- array([0.        , 0.22222222, 0.44444444, 0.66666667, 0.88888889,
-        1.11111111, 1.33333333, 1.55555556, 1.77777778, 2.        ]))
-"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Mechine Learning</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>NumPy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>numpy学习笔记2</title>
     <url>/2021/03/01/numpy-shu-zu-xue-xi-2/</url>
     <content><![CDATA[<h4 id="numpy数组基本运算"><a href="#numpy数组基本运算" class="headerlink" title="numpy数组基本运算"></a>numpy数组基本运算</h4><p>numpy的array乘法和除法操作都是对应元素乘除，而不是矩阵的乘法，这里要注意一下，另外两个array要求shape必须一致才行。</p>
@@ -587,6 +471,159 @@ Out<span class="token punctuation">[</span><span class="token number">29</span><
 
 
 
+]]></content>
+      <categories>
+        <category>Mechine Learning</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>NumPy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>numpy学习笔记1</title>
+    <url>/2021/02/28/numpy-xue-xi-bi-ji-1/</url>
+    <content><![CDATA[<h4 id="numpy模块介绍"><a href="#numpy模块介绍" class="headerlink" title="numpy模块介绍"></a>numpy模块介绍</h4><p>numpy是python中科学计算包，提供了大量关于数组（矩阵，掩码数组）及操作和数学运算的API。</p>
+<p>numpy的数组对象叫做ndarry，它对python原生的同类型n维数组进行了封装，为了保证性能都是在本地进行编译后再执行的。</p>
+<p>numpy数组和python原生Array区别：</p>
+<ul>
+<li>numpy数组创建时有固定大小，python的数组则可以动态增长 ，numpy更改大小实际上是进行的先新建一个数组然后复制过去并删除原数组过程。</li>
+<li>numpy数组中所有数据类型必须相同，但是python数组中则可以不同 。</li>
+<li>numpy数组支持封装好的高级数学和其他操作的接口，运行速度效率比python数组更高。</li>
+</ul>
+<p>ufc是numpy的通函数，是针对ndarray逐元素操作的函数，支持数组广播，类型转换等功能。</p>
+<h4 id="ndarray的属性"><a href="#ndarray的属性" class="headerlink" title="ndarray的属性"></a>ndarray的属性</h4><p>numpy当中维度被称为轴，每个轴表示该维度方向上有几个元素。例如常见的二维数组中，第0个维度数值表示数组横向元素的个数，第1个维度数值表示数组纵向元素的个数。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+a <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+a
+<span class="token triple-quoted-string string">"""
+4表示横向有4个元素，3表示纵向有3个元素
+array([[ 0,  1,  2],
+       [ 3,  4,  5],
+       [ 6,  7,  8],
+       [ 9, 10, 11]])
+"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对于ndarray来说，常用属性如下：</p>
+<ul>
+<li><p><strong>ndarray.ndim</strong> - 数组的轴（维度）的个数。在Python世界中，维度的数量被称为rank。</p>
+</li>
+<li><p><strong>ndarray.shape</strong> - 数组的维度。这是一个整数的元组，表示每个维度中数组的大小。对于有 <em>n</em> 行和 <em>m</em> 列的矩阵，<code>shape</code> 将是 <code>(n,m)</code>。因此，<code>shape</code> 元组的长度就是rank或维度的个数 <code>ndim</code>。</p>
+</li>
+<li><p><strong>ndarray.size</strong> - 数组元素的总数。这等于 <code>shape</code> 的元素的乘积。</p>
+</li>
+<li><p><strong>ndarray.dtype</strong> - 一个描述数组中元素类型的对象。可以使用标准的Python类型创建或指定dtype。另外NumPy提供它自己的类型。例如numpy.int32、numpy.int16和numpy.float64。</p>
+</li>
+<li><p><strong>ndarray.itemsize</strong> - 数组中每个元素的字节大小。例如，元素为 <code>float64</code> 类型的数组的 <code>itemsize</code> 为8（=64/8），而 <code>complex32</code> 类型的数组的 <code>itemsize</code> 为4（=32/8）。它等于 <code>ndarray.dtype.itemsize</code> </p>
+</li>
+<li><p><strong>ndarray.data</strong> - 指向数据存储区域的指针，一般用不上</p>
+</li>
+<li><p><strong>ndarray.strides</strong> - 一个跨度元组，其中的整数指的是为了前进到当前维度下一个元素需要”跨过”的字节数,即strides字段，对底层为一维数组内存存储区进行多维结构解释</p>
+</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+a<span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span>a<span class="token punctuation">.</span>shape<span class="token punctuation">,</span>a<span class="token punctuation">.</span>ndim<span class="token punctuation">,</span>a<span class="token punctuation">.</span>strides<span class="token punctuation">,</span>a<span class="token punctuation">.</span>data<span class="token punctuation">,</span>a<span class="token punctuation">.</span>size<span class="token punctuation">,</span>a<span class="token punctuation">.</span>itemsize<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span>b<span class="token punctuation">.</span>shape<span class="token punctuation">,</span>b<span class="token punctuation">.</span>ndim<span class="token punctuation">,</span>b<span class="token punctuation">.</span>strides<span class="token punctuation">,</span>b<span class="token punctuation">.</span>data<span class="token punctuation">,</span>b<span class="token punctuation">.</span>size<span class="token punctuation">,</span>b<span class="token punctuation">.</span>itemsize<span class="token punctuation">)</span>
+<span class="token triple-quoted-string string">'''
+int32 (4,) 1 (4,) &lt;memory at 0x000001D5032E4D08> 4 4
+int32 (2, 2) 2 (8, 4) &lt;memory at 0x000001D503CC2D68> 4 4
+'''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>注意，len()函数对于一个ndarray对象求长度，取到的是第0个维度的值</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 这个函数用法跟pytorch里的不太一样，pytorch可以不带括号（元组形式）</span>
+x<span class="token punctuation">.</span>shape<span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span>x<span class="token punctuation">.</span>size
+<span class="token triple-quoted-string string">"""
+((5, 3, 4), 5, 60)
+"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="ndarray的创建"><a href="#ndarray的创建" class="headerlink" title="ndarray的创建"></a>ndarray的创建</h4><ol>
+<li>可以在array当中传入python的列表，元组，但是不能传入多个数字来创建array</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1.1</span><span class="token punctuation">,</span><span class="token number">2.2</span><span class="token punctuation">,</span><span class="token number">3.3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+a<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span>b<span class="token punctuation">.</span>dtype
+<span class="token triple-quoted-string string">"""
+(dtype('int32'), dtype('float64'))
+"""</span>
+c <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token triple-quoted-string string">"""
+ValueError                                Traceback (most recent call last)
+&lt;ipython-input-2-159ad3c0c19b> in &lt;module>
+----> 1 c = np.array(1,2,3,4)
+
+ValueError: only 2 non-keyword arguments accepted
+"""</span>
+d <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>dtype<span class="token operator">=</span><span class="token builtin">complex</span><span class="token punctuation">)</span> <span class="token comment"># 可以传入高维矩阵创建高维数组，还可以创建时指定类型</span>
+d
+<span class="token triple-quoted-string string">"""
+array([[1.+0.j, 2.+0.j, 3.+0.j],
+       [3.+0.j, 4.+0.j, 5.+0.j]])
+"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li><p>使用内置函数创建一些指定大小的数组，用特定数值先填充</p>
+<p>函数<code>zeros</code>创建一个由0组成的数组，函数 <code>ones</code>创建一个完整的数组，函数<code>empty</code> 创建一个数组，其初始内容是随机的，取决于内存的状态。默认情况下，创建的数组的dtype是 <code>float64</code> 类型的。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+z <span class="token operator">=</span> np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z
+<span class="token triple-quoted-string string">"""
+(array([[[0., 0., 0., 0.],
+         [0., 0., 0., 0.],
+         [0., 0., 0., 0.]],
+ 
+        [[0., 0., 0., 0.],
+         [0., 0., 0., 0.],
+         [0., 0., 0., 0.]],
+ 
+        [[0., 0., 0., 0.],
+         [0., 0., 0., 0.],
+         [0., 0., 0., 0.]],
+ 
+        [[0., 0., 0., 0.],
+         [0., 0., 0., 0.],
+         [0., 0., 0., 0.]],
+ 
+        [[0., 0., 0., 0.],
+         [0., 0., 0., 0.],
+         [0., 0., 0., 0.]]]),
+ array([[1.],
+        [1.]]),
+ array([[[0., 0.]],
+ 
+        [[0., 0.]],
+ 
+        [[0., 0.]]]))
+"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>np.arange是返回一个范围序列，按照给定的step来划分，np.linspace也是返回一个范围序列，不同的是指定的不是step而是序列元素个数</p>
+<p>因为arange函数当与浮点参数一起使用时，由于有限的浮点精度，通常不可能预测所获得的元素的数量。出于这个原因，通常最好使用<code>linspace</code>函数来接收我们想要的元素数量的函数</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">c <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+d <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+c<span class="token punctuation">,</span>d
+<span class="token triple-quoted-string string">"""
+(array([0, 3, 6, 9]), array([ 0.,  6., 12.]))
+"""</span>
+e <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">0.3</span><span class="token punctuation">)</span>
+f <span class="token operator">=</span> np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span>
+e<span class="token punctuation">,</span>f
+<span class="token triple-quoted-string string">"""
+(array([0. , 0.3, 0.6, 0.9, 1.2, 1.5, 1.8]),
+ array([0.        , 0.22222222, 0.44444444, 0.66666667, 0.88888889,
+        1.11111111, 1.33333333, 1.55555556, 1.77777778, 2.        ]))
+"""</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Mechine Learning</category>
