@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker学习笔记一概述</title>
+    <url>/2021/04/05/docker-xue-xi-1/</url>
+    <content><![CDATA[<h4 id="Docker解决的问题"><a href="#Docker解决的问题" class="headerlink" title="Docker解决的问题"></a>Docker解决的问题</h4><p>docker为程序提供了一些轻量级的容器，这些容器会存储着程序运行所需要的执行环境，使用docker就可以使应用程序和基础架构分开</p>
+<ul>
+<li>保证程序在本地开发和服务器运行环境一致性</li>
+<li>实现程序的快速部署和分发</li>
+</ul>
+<h4 id="Docker-Engine结构"><a href="#Docker-Engine结构" class="headerlink" title="Docker Engine结构"></a>Docker Engine结构</h4><p>Docker Engine是一个包括以下组件的CS应用程序：</p>
+<ul>
+<li>server(docker daemon)- 一个长时间运行的守护进程</li>
+<li>REST API - 一套用与docker daemon通信并指示其执行操作的接口</li>
+<li>客户端 - 命令接口CLI（command line interface）</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617621087/my_blog/docker%E7%BB%93%E6%9E%84%E5%9B%BE_xzuy2b.png" alt="docker结构图"></p>
+<p>CLI理用Docker命令通过REST API直接控制Docker Daemon,而Docker Daemon负责对Docker对象（容器，镜像，网络，数据卷）管理<img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617621076/my_blog/docker%E7%BB%93%E6%9E%84%E6%A6%82%E8%A7%88_f8uzbw.png" alt="docker结构概览"></p>
+<p>Docker结构总结：</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617621094/my_blog/docker%E7%BB%93%E6%9E%84%E6%80%BB%E7%BB%93_vxscvu.png" alt="docker结构总结"></p>
+<h4 id="Docker底层技术概述"><a href="#Docker底层技术概述" class="headerlink" title="Docker底层技术概述"></a>Docker底层技术概述</h4><ol>
+<li><p>Docker用的是go语言实现的</p>
+</li>
+<li><p>Docker理用的是Linux内核的几个特性来实现的，Windows上能使用Docker是因为使用是虚拟化的技术</p>
+<ul>
+<li>利用的是Linux的命名空间（Namespaces)</li>
+<li>利用的是Linux的控制组（control Groups）</li>
+<li>利用的是Linux的联合文件系统（Union File Systems）</li>
+</ul>
+</li>
+<li><p>容器格式</p>
+<p>Docker引擎将命名空间，控制组，联合文件系统打成一个包称为容器格式，它是Docker创建容器和对容器管理的单位。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Docker学习笔记一Docker核心技术之镜像</title>
     <url>/2021/04/09/docker-he-xin-ji-zhu-jing-xiang/</url>
     <content><![CDATA[<h3 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h3><p>Docker镜像是一个Docker的可执行文件，其中包括运行应用程序时所需的所有代码内容，依赖库。环境变量和配置文件等。一个镜像可以创建一个或者多个容器。</p>
@@ -128,43 +165,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Docker学习笔记一概述</title>
-    <url>/2021/04/05/docker-xue-xi-1/</url>
-    <content><![CDATA[<h4 id="Docker解决的问题"><a href="#Docker解决的问题" class="headerlink" title="Docker解决的问题"></a>Docker解决的问题</h4><p>docker为程序提供了一些轻量级的容器，这些容器会存储着程序运行所需要的执行环境，使用docker就可以使应用程序和基础架构分开</p>
-<ul>
-<li>保证程序在本地开发和服务器运行环境一致性</li>
-<li>实现程序的快速部署和分发</li>
-</ul>
-<h4 id="Docker-Engine结构"><a href="#Docker-Engine结构" class="headerlink" title="Docker Engine结构"></a>Docker Engine结构</h4><p>Docker Engine是一个包括以下组件的CS应用程序：</p>
-<ul>
-<li>server(docker daemon)- 一个长时间运行的守护进程</li>
-<li>REST API - 一套用与docker daemon通信并指示其执行操作的接口</li>
-<li>客户端 - 命令接口CLI（command line interface）</li>
-</ul>
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617621087/my_blog/docker%E7%BB%93%E6%9E%84%E5%9B%BE_xzuy2b.png" alt="docker结构图"></p>
-<p>CLI理用Docker命令通过REST API直接控制Docker Daemon,而Docker Daemon负责对Docker对象（容器，镜像，网络，数据卷）管理<img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617621076/my_blog/docker%E7%BB%93%E6%9E%84%E6%A6%82%E8%A7%88_f8uzbw.png" alt="docker结构概览"></p>
-<p>Docker结构总结：</p>
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617621094/my_blog/docker%E7%BB%93%E6%9E%84%E6%80%BB%E7%BB%93_vxscvu.png" alt="docker结构总结"></p>
-<h4 id="Docker底层技术概述"><a href="#Docker底层技术概述" class="headerlink" title="Docker底层技术概述"></a>Docker底层技术概述</h4><ol>
-<li><p>Docker用的是go语言实现的</p>
-</li>
-<li><p>Docker理用的是Linux内核的几个特性来实现的，Windows上能使用Docker是因为使用是虚拟化的技术</p>
-<ul>
-<li>利用的是Linux的命名空间（Namespaces)</li>
-<li>利用的是Linux的控制组（control Groups）</li>
-<li>利用的是Linux的联合文件系统（Union File Systems）</li>
-</ul>
-</li>
-<li><p>容器格式</p>
-<p>Docker引擎将命名空间，控制组，联合文件系统打成一个包称为容器格式，它是Docker创建容器和对容器管理的单位。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-  </entry>
-  <entry>
     <title>c++ map的遍历方式</title>
     <url>/2021/03/08/c-map-de-san-chong-bian-li-fang-shi/</url>
     <content><![CDATA[<p>c++ map的遍历方式主要包括迭代器遍历和高级for循环遍历</p>
@@ -203,6 +203,384 @@ int main()&#123;
       <tags>
         <tag>C++</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Docker学习笔记一Docker核心技术之仓库</title>
+    <url>/2021/05/01/docker-cang-ku-guan-li/</url>
+    <content><![CDATA[<h5 id="无认证仓库搭建"><a href="#无认证仓库搭建" class="headerlink" title="无认证仓库搭建"></a>无认证仓库搭建</h5><ol>
+<li><p>首先要在服务器上安装docker并且下载registry仓库，使用<strong>docker pull registry</strong>实现</p>
+</li>
+<li><p>在服务器上，启动registry(它就是一个普通镜像)</p>
+<pre class="line-numbers language-none"><code class="language-none">docker run -d -ti --restart always --name my_registry -p 8000:5000 -v &#x2F;root&#x2F;xxx:&#x2F;var&#x2F;lib&#x2F;registry<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+</li>
+</ol>
+<p><strong>注：–restart的作用是当docker重启时，指定该参数的容器也会跟着一起重启，否则还得手动启动才行，-p的第一个端口是宿主机对外暴露接口，是可以更改的，5000是固定接口，-v数据卷后面的容器路径也是固定的</strong></p>
+<ol start="3">
+<li>使用浏览器或者curl 服务器ip:8000/v2/_catalog 查看当前仓库已经存在镜像</li>
+</ol>
+<h5 id="私有仓库镜像上传"><a href="#私有仓库镜像上传" class="headerlink" title="私有仓库镜像上传"></a>私有仓库镜像上传</h5><ol>
+<li>利用docker tag IMAGE 服务器IP：端口/IMAGE_NAME</li>
+<li>docker push 服务器IP：端口/IMAGE_NAME</li>
+</ol>
+<p><strong>注：这里1的重命名必须按照上面规则来做，另外在使用2时可能会发生https错误，这是因为镜像服务器那边没有进行https认证导致的，若不想使用https,则需要在/etc/docker/daemon.json文件里添加“insecure-registries”:[“服务器IP：端口”]，然后重启docker</strong></p>
+<h5 id="私有仓库镜像下载"><a href="#私有仓库镜像下载" class="headerlink" title="私有仓库镜像下载"></a>私有仓库镜像下载</h5><p>docker pull 服务器IP：端口/IMAGE_NAME进行下载</p>
+<h5 id="有认证的私人仓库"><a href="#有认证的私人仓库" class="headerlink" title="有认证的私人仓库"></a>有认证的私人仓库</h5><ol>
+<li>删除原先无认证的仓库docker rm -f xxxx</li>
+<li>创建存放认证的用户名密码文件夹 mkdir /xxxx/auth-p</li>
+<li>创建密码验证文件docker run –entrypoint htpasswd registry -Bbn 用户名 密码&gt;/xxxx/auth/htpasswd</li>
+<li>重启创建镜像</li>
+</ol>
+<p>​    docker run -d -p 8000:5000 –restart=always –name docker-registry -v /xxxx/registry:/var/lib/registry -v /xxxx/auth:/auth -e”REGISTRY_AUTH=htpasswd” -e “REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm” -e “REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd”registry</p>
+<h5 id="有认证的仓库镜像上传与下载"><a href="#有认证的仓库镜像上传与下载" class="headerlink" title="有认证的仓库镜像上传与下载"></a>有认证的仓库镜像上传与下载</h5><ol>
+<li>先进行登陆操作docker login -u 用户名 -p 密码 服务器IP：端口</li>
+<li>执行pull/push命令，同上</li>
+<li>登出操作docker logout 服务器IP：端口</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Docker学习笔记一Docker容器与镜像关系</title>
+    <url>/2021/05/01/docker-rong-qi-yu-jing-xiang-guan-xi/</url>
+    <content><![CDATA[<h4 id="容器与镜像的关系"><a href="#容器与镜像的关系" class="headerlink" title="容器与镜像的关系"></a>容器与镜像的关系</h4><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619839212/my_blog/%E5%AE%B9%E5%99%A8%E4%B8%8E%E9%95%9C%E5%83%8F%E7%9A%84%E5%85%B3%E7%B3%BB_usihqk.png" alt="容器与镜像的关系"></p>
+<h5 id="容器提交变成镜像"><a href="#容器提交变成镜像" class="headerlink" title="容器提交变成镜像"></a>容器提交变成镜像</h5><p>作用：将一个容器提交变成镜像</p>
+<p>命令格式：docker commit [OPTIONS] 容器名 [镜像名：tags]</p>
+<p>可选参数：</p>
+<p>-a                     镜像作者</p>
+<p>-m                    提交信息</p>
+<p>-p                     提交的时候是否暂停容器，默认为true</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo docker commit -m &#39;xxx&#39; 4950 centos-ifconfig:1.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619839608/my_blog/%E5%AE%B9%E5%99%A8%E6%89%93%E5%8C%85%E6%88%90%E9%95%9C%E5%83%8F_ndg2gz.png" alt="容器打包成镜像"></p>
+<h5 id="容器导出"><a href="#容器导出" class="headerlink" title="容器导出"></a>容器导出</h5><p>作用：将当前容器导出成文件</p>
+<p>命令格式：docker export [OPTIONS] 容器名</p>
+<p>命令参数：</p>
+<p>-o                       指定导出的路径</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker export -o .&#x2F;xxx 4950<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619840229/my_blog/%E5%AE%B9%E5%99%A8%E6%89%93%E5%8C%85_mxk6oo.png" alt="容器打包导出"></p>
+<h5 id="容器导入"><a href="#容器导入" class="headerlink" title="容器导入"></a>容器导入</h5><p>作用：将打包好的容器文件导入成<strong>镜像</strong>（这里是镜像不是直接的容器）</p>
+<p>命令格式：docker import [OPTIONS] 文件路径 [镜像名：tag]</p>
+<p>可选参数：</p>
+<p>-m                          导入信息</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker import demo_container.tar demo:1.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619840398/my_blog/%E5%AE%B9%E5%99%A8%E5%AF%BC%E5%85%A5_titrkf.png" alt="容器导入"></p>
+<p><strong>注：导入的结果是镜像不是容器，最后镜像那个可选参数是给导入的镜像命名，不填默认就是none了</strong></p>
+<h5 id="容器导出import和commit对比"><a href="#容器导出import和commit对比" class="headerlink" title="容器导出import和commit对比"></a>容器导出import和commit对比</h5><p>相同点：两者都是讲容器导出到镜像，都可以添加说明信息等内容</p>
+<p>不同点：</p>
+<ol>
+<li>import导出的镜像，合并了原来容器的历史信息，获得的镜像就跟新的一样。commit导出的镜像，则保存了之前容器操作的历史信息。</li>
+<li>因为两者的历史信息保存的不一样，所以用inspect参看配置信息结果也不一样</li>
+</ol>
+<h4 id="联合文件系统"><a href="#联合文件系统" class="headerlink" title="联合文件系统"></a>联合文件系统</h4><p>​        联合文件系统是docker实现的重要组成技术之一。它是一种轻量级的高性能分层文件系统，支持将文件系统中的修改进行提交和层层叠加，这个特性使得镜像可以通过分层实现和继承。同时支持将不同目录挂载到同一个虚拟文件系统下。</p>
+<p>​        在Docker镜像分为基础镜像和父镜像，没有父镜像的镜像被称为基础镜像。用户是基于基础镜像来制作各种不同的应用镜像。这些应用镜像共享同一个基础镜像层，提高了存储效率。</p>
+<p>​       当用户通过升级程序到新版本，改变了一个Docker镜像时，一个新的镜像层会被创建。因此，用户不用替换整个原镜像或者完全重新建立新镜像，只需要添加新层即可。在用户分发镜像的时，也只需要分发被改动的新层内容(增量部分)。这让Docker的镜像管理变得十分轻松级和快速。</p>
+<p>​         在docker中使用AUFS(Another Union File System或Advanced Multilayered Unification File  System)就是一种联合文件系统。AUFS不仅可以对每一个目录设定只读(Readonly)、读写(Readwrite)和写(Witeout-able)权限，同时AUFS也可以支持分层的机制，例如，可以对只读权限部分逻辑上进行增量地修改而不影响只读部分。</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619840436/my_blog/%E8%81%94%E5%90%88%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F_rgwmct.png" alt="联合文件系统"></p>
+<p>​       docker的联合文件系统看起来就是一个链表串起来了不同版本的内容，有点类似git管理，只有当容器的实质内容变动（比如文件写操作或者修改操作）才会创建一个新的文件系统，并把当前的系统作为可读可写的，而前面的只能是只读的。</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619840452/my_blog/%E5%AE%B9%E5%99%A8%E4%B8%8E%E9%95%9C%E5%83%8F%E7%9A%84%E5%85%B3%E7%B3%BB-%E8%81%94%E5%90%88%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F_ckkgzz.png" alt="容器与镜像的关系-联合文件系统"></p>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Docker学习笔记一Docker数据卷</title>
+    <url>/2021/05/01/docker-shu-ju-juan/</url>
+    <content><![CDATA[<h4 id="数据卷介绍"><a href="#数据卷介绍" class="headerlink" title="数据卷介绍"></a>数据卷介绍</h4><h5 id="如果不使用数据卷的问题"><a href="#如果不使用数据卷的问题" class="headerlink" title="如果不使用数据卷的问题"></a>如果不使用数据卷的问题</h5><ul>
+<li>宿主机无法直接访问容器中文件</li>
+<li>容器中文件没有持久化，一旦删除容器就会丢失（如容器里数据库存储了数据，容器被删除，则数据库也被删除了）</li>
+<li>容器之间无法进行直接文件访问，若想使用相同的配置文件就很麻烦</li>
+</ul>
+<h5 id="数据卷（volumes"><a href="#数据卷（volumes" class="headerlink" title="数据卷（volumes)"></a>数据卷（volumes)</h5><ul>
+<li>容器和主机、容器与容器之间共享文件</li>
+<li>容器中数据持久化</li>
+<li>将容器中的数据备份、迁移、恢复等</li>
+</ul>
+<h5 id="数据卷的特点"><a href="#数据卷的特点" class="headerlink" title="数据卷的特点"></a>数据卷的特点</h5><ul>
+<li>数据卷存在于宿主机的文件系统中，独立于容器，和容器的生命周期无关</li>
+<li>数据卷可以是目录也可以是文件</li>
+<li>容器初始化时，若原镜像包含了数据，则会拷到数据卷中</li>
+<li>容器对数据卷的操作是实时的</li>
+<li>数据卷变化不会影响镜像的更新，数据卷是独立于联合文件系统的 ，而镜像是基于联合文件系统的，因此两者变化无影响。</li>
+</ul>
+<h4 id="docker挂载容器数据卷得三种方式"><a href="#docker挂载容器数据卷得三种方式" class="headerlink" title="docker挂载容器数据卷得三种方式"></a>docker挂载容器数据卷得三种方式</h4><ul>
+<li>bind mounts:将宿主机上得一个文件或者目录被挂载到容器上，相当于创建了一个引用进行操作</li>
+<li>volumes: 是docker基于bind mounts实现得挂载方式，与bind mounts不同在于操作的是指定的宿主机文件</li>
+<li>tmpfs mounts: 是一种基于内存的临时文件系统</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841492/my_blog/%E5%AE%B9%E5%99%A8%E6%8C%82%E8%BD%BD%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F_rrgt7u.png" alt="容器挂载三种方式"></p>
+<h5 id="bind-mounts-方式"><a href="#bind-mounts-方式" class="headerlink" title="bind mounts 方式"></a>bind mounts 方式</h5><p>利用docker run/create参数进行容器挂载指定</p>
+<p>用法：</p>
+<ol>
+<li>-v 参数                        -v 宿主机路径：容器路径</li>
+<li>–mount参数             –mount type=bind,src=宿主机已经存在文件路径,dst=容器路径 </li>
+</ol>
+<p><strong>注意：方式2 src指定的宿主机路径必须是已经存在的，方式1的则可以指定不存在的</strong></p>
+<p>例如：</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841538/my_blog/bind_mount%E5%88%9B%E5%BB%BA_hepdth.png" alt="bind_mount创建"></p>
+<p><strong>注意：实践得知在Ubuntu下容器里并不会真的有这个目录，宿主机里会有那个目录</strong></p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841826/my_blog/bind_mount%E5%85%B3%E8%81%94%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA_edue5y.png" alt="bind_mount关联效果展示"></p>
+<h5 id="volume方式挂载"><a href="#volume方式挂载" class="headerlink" title="volume方式挂载"></a>volume方式挂载</h5><p>利用docker create/run为容器挂载数据卷，volume方式其实是docker对bind mount方式的封装，不过管理起来更加方便</p>
+<p>用法：</p>
+<ol>
+<li>-v 参数                        -v volume_name：容器路径</li>
+<li>–mount参数             –mount type=volume,src=volume_name,dst=容器路径</li>
+</ol>
+<p><strong>注：这里方式2的src的volume_name即使没有事先创建也能正常执行了</strong></p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo docker run -v demo_volume:&#x2F;volume_dir 300e<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841902/my_blog/volume%E6%8C%82%E8%BD%BD%E6%96%B9%E5%BC%8F_kymzec.png" alt="volume挂载方式"></p>
+<h5 id="volume挂载之volume操作命令"><a href="#volume挂载之volume操作命令" class="headerlink" title="volume挂载之volume操作命令"></a>volume挂载之volume操作命令</h5><ol>
+<li>docker volume ls : 查看当前docker管理的volume</li>
+<li>docker volume create : 创建volume</li>
+<li>docker volume inspect : 查看volume信息</li>
+<li>docker volume prune : 删除无容器使用的数据卷</li>
+<li>docker volume rm : 强制删除数据卷，无论是否有容器在使用</li>
+</ol>
+<h5 id="tmpfs方式挂载"><a href="#tmpfs方式挂载" class="headerlink" title="tmpfs方式挂载"></a>tmpfs方式挂载</h5><p>将容器的文件挂载到宿主机的内存上</p>
+<p>推荐命令：</p>
+<p>docker run/create –mount type=tmpfs,dst=要挂载的文件目录</p>
+<h5 id="共享其他容器数据卷挂载方式"><a href="#共享其他容器数据卷挂载方式" class="headerlink" title="共享其他容器数据卷挂载方式"></a>共享其他容器数据卷挂载方式</h5><p>利用docker run/create –volumes-from 容器名来实现，需要存在一个已经在使用数据卷的容器</p>
+<h4 id="docker数据卷使用注意"><a href="#docker数据卷使用注意" class="headerlink" title="docker数据卷使用注意"></a>docker数据卷使用注意</h4><ul>
+<li>docker三种数据卷使用最多的是volume方式，因为方便管理</li>
+<li>如果挂载一个空的数据卷目录到容器中一个非空的目录上，数据卷目录会被初始化成容器非空目录的样子</li>
+<li>如果挂载一个非空的数据卷到容器一个目录上，则该目录的显示将替换成数据卷中的样子，原目录里的数据会被隐藏起来</li>
+</ul>
+<p>规则2可以帮助我们便捷初始化数据卷里内容，规则3则保证挂载后数据卷后的目录总是想要的。</p>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Docker学习笔记一Docker核心技术之容器</title>
+    <url>/2021/05/01/docker-he-xin-ji-zhu-zhi-rong-qi/</url>
+    <content><![CDATA[<h4 id="docker容器概述"><a href="#docker容器概述" class="headerlink" title="docker容器概述"></a>docker容器概述</h4><p>容器：容器是一种轻量级，可移植并将应用程序打包的技术，使得程序可以在任何地方以相同的方式运行。</p>
+<ul>
+<li>docker将镜像运行起来的就是容器，容器相当于动态的镜像，类似exe文件和运行程序的关系</li>
+<li>容器具备一定生命周期</li>
+<li>可以使用docker ps命令查看容器</li>
+</ul>
+<h5 id="docker容器与虚拟机相同点"><a href="#docker容器与虚拟机相同点" class="headerlink" title="docker容器与虚拟机相同点"></a>docker容器与虚拟机相同点</h5><ul>
+<li>容器和虚拟机一样，都需要裸机的物理资源分配（内存，cpu)</li>
+<li>容器和虚拟机的生命周期比较相似，都需要经过创建、运行、暂停、关闭</li>
+<li>容器和虚拟机都能安装各种应用，如redis等</li>
+<li>容器和虚拟机都会在主机操作系统下创建文件夹保存信息</li>
+</ul>
+<h5 id="docker容器与虚拟机"><a href="#docker容器与虚拟机" class="headerlink" title="docker容器与虚拟机"></a>docker容器与虚拟机</h5><ul>
+<li>容器是直接运行在 宿主机上的，本质上是宿主机一系列进程集合，但是虚拟机是在虚拟化技术基础上运行完整操作系统的</li>
+<li>docker是轻量级的，虚拟机是重量级的，虚拟机的花费要更大，docker则很小。</li>
+</ul>
+<h5 id="虚拟机的生命周期"><a href="#虚拟机的生命周期" class="headerlink" title="虚拟机的生命周期"></a>虚拟机的生命周期</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837220/my_blog/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F_h1cytj.png" alt="虚拟机生命周期"></p>
+<ul>
+<li>running和paused状态下虚拟机还在运行下，对于虚拟机文件删除只能采用强制删除方式，其他情况则可以采用正常删除手段</li>
+</ul>
+<h5 id="docker容器的生命周期"><a href="#docker容器的生命周期" class="headerlink" title="docker容器的生命周期"></a>docker容器的生命周期</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837354/my_blog/docker%E5%AE%B9%E5%99%A8%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F_dfofpx.png" alt="docker容器生命周期"></p>
+<h4 id="docker容器生命周期管理"><a href="#docker容器生命周期管理" class="headerlink" title="docker容器生命周期管理"></a>docker容器生命周期管理</h4><h5 id="容器创建"><a href="#容器创建" class="headerlink" title="容器创建"></a>容器创建</h5><p>作用：利用镜像创建一个待使用的容器</p>
+<p>命令格式：docker create [OPTIONS] IMAGE [COMMAND] [ARG…]</p>
+<p>常用参数（这个参数太多了）：</p>
+<p>-t           分配一个虚拟终端</p>
+<p>-i            使用stdin打开</p>
+<p>–name  为创建的容器起个别名</p>
+<p><strong>注：[COMMAND]和[ARG..]指的是可选的image里的命令和可选参数，如image是Ubuntu，command可以使用ls -al，这样生成的容器会默认执行该命令（初始化执行），如果不指定该命令，则会执行默认的，要查看默认命令，通过docker inspect命令查看cmd项的值。参数-t,-i一般一并使用，因为打开的镜像内需要使用终端操作，不加会导致打开失败</strong></p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker create -ti centos python3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837510/my_blog/docker%E5%AE%B9%E5%99%A8%E5%88%9B%E5%BB%BA_e7h6wq.png" alt="容器创建"></p>
+<h5 id="容器删除"><a href="#容器删除" class="headerlink" title="容器删除"></a>容器删除</h5><p>作用：删除一个或者多个容器</p>
+<p>命令格式：docker rm [OPTIONS] 容器1，容器2</p>
+<p>常用参数：</p>
+<p> -f                  强制删除容器</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker rm -f centos_python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837561/my_blog/%E5%AE%B9%E5%99%A8%E5%88%A0%E9%99%A4_rgrrug.png" alt="容器删除"></p>
+<h5 id="容器启动"><a href="#容器启动" class="headerlink" title="容器启动"></a>容器启动</h5><p>作用：从创建状态或者退出状态启动一个容器</p>
+<p>命令格式：docker start [OPTIONS] 容器1，容器2</p>
+<p>常用参数：</p>
+<p>-a                将容器启动的内容标准输出到当前控制台</p>
+<p>-i                 把当前标准输入传递给容器</p>
+<p>–rm           在容器停止后就立即删除容器</p>
+<p>例如:</p>
+<pre class="line-numbers language-none"><code class="language-none">docker create -a centos_ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837788/my_blog/%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A81_mz2wpy.png" alt="容器启动1"></p>
+<p>**注：上图所示的是启动centos并执行ls -als的情况，如果启动的时候不加-a参数，则不会将容器的输出输出到当前终端上，若是还想对容器里的终端进行操作，则启动还必须加上-i **</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837850/my_blog/docker%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A82_rxvflg.png" alt="容器启动2"></p>
+<h5 id="容器运行"><a href="#容器运行" class="headerlink" title="容器运行"></a>容器运行</h5><p>作用：创建并启动容器</p>
+<p>命令格式：docker run [OPTION] 镜像 [COMMAND] [ARG]</p>
+<p>常用参数：-ti （同create）</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker run -ti centos python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837895/my_blog/docker%E5%AE%B9%E5%99%A8%E8%BF%90%E8%A1%8C_wkand3.png" alt="容器运行"></p>
+<p>若加上–rm选项，则在停止容器后就删除该容器，如下所示：</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838159/my_blog/docker%E5%AE%B9%E5%99%A8%E5%88%9B%E5%BB%BA%E5%81%9C%E6%AD%A2%E5%88%A0%E9%99%A4_svgyqc.png" alt="容器创建删除"></p>
+<h6 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h6><ol>
+<li>docker run xxx 等价于 docker create+docker start -a</li>
+<li>docker run -d 等价于docker create +docker start(后台运行，只要加了-d一律都是后台运行了)</li>
+<li>拿不准想要控制态输出，就写docker run -ti xxx</li>
+</ol>
+<h5 id="容器关闭"><a href="#容器关闭" class="headerlink" title="容器关闭"></a>容器关闭</h5><p>作用：关闭一个运行的容器(若不指定-t时间则默认等10s)</p>
+<p>命令格式：docker stop [OPTION] 容器名</p>
+<p>可选参数：</p>
+<p>-t                   后面接int数字，表示在第x秒后执行关闭操作</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker stop -t 511 8514<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838197/my_blog/docker%E5%AE%B9%E5%99%A8%E5%85%B3%E9%97%AD_utcvul.png" alt="容器关闭"></p>
+<h5 id="容器强制关闭（不推荐使用，除非真的关不上容器）"><a href="#容器强制关闭（不推荐使用，除非真的关不上容器）" class="headerlink" title="容器强制关闭（不推荐使用，除非真的关不上容器）"></a>容器强制关闭（不推荐使用，除非真的关不上容器）</h5><p>作用：强制关闭容器</p>
+<p>命令格式：docker kill [OPTION] 容器名</p>
+<p>可选参数：</p>
+<p>-s                   给出kill的信号，具体参考如下Linux信号</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838247/my_blog/Linux_kill%E4%BF%A1%E5%8F%B7_p06mwq.png" alt="Linux_kill信号"></p>
+<p><strong>注：默认情况下，docker stop命令先执行的是第15 SIGTERM信号，处理完后再执行SIGKILL信号，docker kill直接执行的是SIGKILL信号</strong></p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker kill 9091<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="容器暂停-继续"><a href="#容器暂停-继续" class="headerlink" title="容器暂停/继续"></a>容器暂停/继续</h5><p>作用：暂停容器运行/解除暂停状态</p>
+<p>命令格式：docker pause xxx/docker unpause xxxx</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker pause 4050
+docker unpause 4050<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838662/my_blog/docker%E5%AE%B9%E5%99%A8%E6%9A%82%E5%81%9C_aohgdw.png" alt="容器暂停"></p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838740/my_blog/docker%E5%AE%B9%E5%99%A8%E8%A7%A3%E9%99%A4%E6%9A%82%E5%81%9C_ekfmhe.png" alt="容器解除暂停"></p>
+<h5 id="容器重启"><a href="#容器重启" class="headerlink" title="容器重启"></a>容器重启</h5><p>作用：重启容器</p>
+<p>命令格式：docker restart 容器名</p>
+<p>可选参数：</p>
+<p>-t                            在第n秒后开始重启</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker restart 5112<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h5 id="docker容器信息查询"><a href="#docker容器信息查询" class="headerlink" title="docker容器信息查询"></a>docker容器信息查询</h5><p>命令同镜像信息查询</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838472/my_blog/docke%E5%AE%B9%E5%99%A8%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2_daqfgc.png" alt="容器信息查询"></p>
+<h5 id="dockers容器日志"><a href="#dockers容器日志" class="headerlink" title="dockers容器日志"></a>dockers容器日志</h5><p>这里所谓的日志，就是启动容器后指定的容器的cmd命令输出的内容</p>
+<p>命令格式：docker logs 容器名</p>
+<p>可选参数：</p>
+<p>-f                   持续输出，指那些一直有输出的日志信息</p>
+<p>-t                  带有时间的输出</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker logs -t cf92<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619839003/my_blog/docker%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B_r6wmtf.png" alt="容器日志信息查看"></p>
+<h5 id="docker容器重命名"><a href="#docker容器重命名" class="headerlink" title="docker容器重命名"></a>docker容器重命名</h5><p>作用：给容器重命名</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker rename xxxx test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="容器运行时命令"><a href="#容器运行时命令" class="headerlink" title="容器运行时命令"></a>容器运行时命令</h4><p>这部分内容主要指的是，当几个容器在后台运行时，我们想要</p>
+<h5 id="容器连接"><a href="#容器连接" class="headerlink" title="容器连接"></a>容器连接</h5><p>作用：将当前终端与标准输入输出流连接</p>
+<p>命令格式：docker attach 容器名</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker attach 0857<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>注：退出容器的终端除了使用终端自带的exit外，还可以通过ctrl+d退出</strong></p>
+<h5 id="容器执行新的命令"><a href="#容器执行新的命令" class="headerlink" title="容器执行新的命令"></a>容器执行新的命令</h5><p>作用: 类似于在容器里新开了一个终端，不影响容器命令本体</p>
+<p>命令格式：docker exec -ti 容器名 命令</p>
+<p>常用参数：</p>
+<p>-d                    后台运行</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker exec -ti 1234 python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Docker学习笔记一Docker核心技术之网络</title>
+    <url>/2021/05/01/docker-he-xin-ji-zhu-zhi-wang-luo-guan-li/</url>
+    <content><![CDATA[<h4 id="docker网路管理"><a href="#docker网路管理" class="headerlink" title="docker网路管理"></a>docker网路管理</h4><p>​      docker因为低层依赖了namespace技术，该技术作用是隔离了每个容器之间的硬件使用，因此，也就默认隔离了各容器间的网络。</p>
+<p>​      不过在实际使用的docker的时候，根据业务场景的不同需要我们对容器的网络进行不同的配置，如：</p>
+<ul>
+<li>web应用（nginx部署）需要网络隔离</li>
+<li>保密型程序不需要网络</li>
+<li>需要定制化网络，进行容器之间的联系</li>
+</ul>
+<p>docker 有五种网络驱动模式：</p>
+<ul>
+<li>bridge net :桥接，使用NAT技术</li>
+<li>host net:主机，和主机不隔离网络</li>
+<li>None net:容器禁用网络</li>
+<li>overlay net: 利用VXLAN实现bridge模式</li>
+<li>MacVLAN net:每个容器具备各自的MAC地址</li>
+</ul>
+<h4 id="常用网络配置命令"><a href="#常用网络配置命令" class="headerlink" title="常用网络配置命令"></a>常用网络配置命令</h4><h5 id="网络查看"><a href="#网络查看" class="headerlink" title="网络查看"></a>网络查看</h5><p>作用：查看已经建立的网络对象</p>
+<p>命令格式：docker network ls[OPTIONS]</p>
+<p>可选参数：</p>
+<p>-f                        过滤条件（‘driver=bridge’)</p>
+<p>–format string       go语言格式化</p>
+<p>–no-trunc                不缩略显示</p>
+<p>-q                       只显示网络对象ID</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo docker network ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619840675/my_blog/docker%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B_g7i02r.png" alt="网络信息查看"></p>
+<h5 id="创建网络"><a href="#创建网络" class="headerlink" title="创建网络"></a>创建网络</h5><p>作用：创建网络对象</p>
+<p>命令格式：docker network create [OPTIONS] networkname</p>
+<p>命令参数：</p>
+<p>-d                 指定创建网络驱动名称</p>
+<p>–subnet strings      指定子网字段（192.168.0.0/16）</p>
+<p>–ip-range strings    指定容器ip范围，必须在subnet范围内</p>
+<p>–gateway strings    子网IPv4或者IPv6网关</p>
+<p><strong>注：1. host和null（none）模式的网络只能存在一个  2.docker自带overlay需要依赖docker swarm服务才能创建</strong></p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo docker network create -d macvlan my_net<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619840723/my_blog/%E5%88%9B%E5%BB%BA%E7%BD%91%E7%BB%9C_my8kic.png" alt="创建网络"></p>
+<h5 id="网络删除"><a href="#网络删除" class="headerlink" title="网络删除"></a>网络删除</h5><p>作用：删除网络</p>
+<p>命令格式：docker network rm NETWORK [NETWORK…]</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo docker network rm my_net<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="网络信息查看"><a href="#网络信息查看" class="headerlink" title="网络信息查看"></a>网络信息查看</h5><p>作用：查看网络信息</p>
+<p>命令格式：docker inspect [OPTIONS] NAME|ID [NAME|ID…]</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo docker inspect network my_net<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619840890/my_blog/%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B_eq8af8.png" alt="网络信息查看"></p>
+<h5 id="网络使用"><a href="#网络使用" class="headerlink" title="网络使用"></a>网络使用</h5><p>作用：在创建容器的时候为该容器指定网络类型</p>
+<p>命令：docker run/create –network 网络名 xxx</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker run --network my-bridge -dti cenos ls -alh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="网络的连接与断开"><a href="#网络的连接与断开" class="headerlink" title="网络的连接与断开"></a>网络的连接与断开</h5><p>作用：对已经运行的容器，指定其连接或者断开指定类型网络</p>
+<p>命令：docker connect/disconnect 网路类型 容器id</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker connect bridge 1728<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>注：1.host，overlay网络是不能connect和disconnect操作的 2.none网络一旦连接，就不能同时连其他网络，必须断开才可以，bridge网络和macvlan是可以同时连多个网络的</strong></p>
+<h4 id="docker网络模式原理"><a href="#docker网络模式原理" class="headerlink" title="docker网络模式原理"></a>docker网络模式原理</h4><h5 id="bridge模式"><a href="#bridge模式" class="headerlink" title="bridge模式"></a>bridge模式</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619840926/my_blog/bridge%E6%A8%A1%E5%BC%8F%E5%8E%9F%E7%90%861_fsquub.png" alt="bridge模式原理1"></p>
+<h5 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619840953/my_blog/%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84_mwc5ey.png" alt="端口映射"></p>
+<h5 id="host模式"><a href="#host模式" class="headerlink" title="host模式"></a>host模式</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841023/my_blog/host%E6%A8%A1%E5%BC%8F_alwq8g.png" alt="host模式"></p>
+<h5 id="container网络模式（特殊host模式）"><a href="#container网络模式（特殊host模式）" class="headerlink" title="container网络模式（特殊host模式）"></a>container网络模式（特殊host模式）</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841008/my_blog/container%E6%A8%A1%E5%BC%8F_umcr0l.png" alt="container模式"></p>
+<h5 id="none网络模式"><a href="#none网络模式" class="headerlink" title="none网络模式"></a>none网络模式</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841163/my_blog/none%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86_drxjyg.png" alt="none网络原理"></p>
+<h5 id="overlay模式"><a href="#overlay模式" class="headerlink" title="overlay模式"></a>overlay模式</h5><p>overlay模式主要是用于不同主机上的容器间通信的，虽然bridge模式和host模式同样可以做到，但是前者需要进行端口映射，会带来ip和端口管理问题（数量很多的时候），后者则直接占用了大量主机端口。</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841265/my_blog/overlay%E5%8E%9F%E7%90%86_vffesk.png" alt="overlay原理"></p>
+<p>vxLAN实现原理简述：vxLAN把传统的TCP/IP协议层最后的MAC数据头换成了VXLAN数据头。主机1上的容器要跟主机2上的容器通信的时候，首先在自己的IP数据报上封装了数据头，容器IP和eth0网卡的端口信息，<strong>因为与每个容器对应的虚拟网卡eth0的IP地址要保证是在同一个网段的，是无法直接发送数据的</strong>，采用vxLAN数据头灰把上面容器的数据包作为新的头部再次封装，这次封装的IP是容器主机的IP地址和主机对外通信的MAC地址。具体如下图所示：</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841301/my_blog/vxLAN%E9%9A%A7%E9%81%93%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86_r8xtcw.png" alt="vxLAN隧道通信原理"></p>
+<h5 id="macvlan模式"><a href="#macvlan模式" class="headerlink" title="macvlan模式"></a>macvlan模式</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619841034/my_blog/macvlan%E6%A8%A1%E5%BC%8F_fsi7uf.png" alt="macvlan模式"></p>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
   </entry>
   <entry>
     <title>Hello World</title>
@@ -339,6 +717,89 @@ public:
 <li>忘记了传统线性表最基础的删除方法（写了好久才写对，以后要多看一下）</li>
 <li>双指针操作线性标是个常见的解决方法，要多理解学习</li>
 </ol>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode刷题笔记-滑动窗口法</title>
+    <url>/2021/03/24/leetcode-shua-ti-bi-ji-shu-zu-pian-hua-dong-chuang-kou-fa/</url>
+    <content><![CDATA[<h4 id="209题-长度最小的连续子数组"><a href="#209题-长度最小的连续子数组" class="headerlink" title="209题 长度最小的连续子数组"></a>209题 长度最小的连续子数组</h4><p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p>
+<p>找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。</p>
+<p>示例 1：</p>
+<p>输入：target = 7, nums = [2,3,1,2,4,3]<br>输出：2<br>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</p>
+<p>示例 2：</p>
+<p>输入：target = 4, nums = [1,4,4]<br>输出：1</p>
+<p>示例 3：</p>
+<p>输入：target = 11, nums = [1,1,1,1,1,1,1,1]<br>输出：0</p>
+<h4 id="暴力求解"><a href="#暴力求解" class="headerlink" title="暴力求解"></a>暴力求解</h4><p>直接两个for循环找满足条件的子数组就好了，<strong>注意暴力求解还是后面的滑动窗口，都要考虑没找到子数组的情况</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    int minSubArrayLen(int target, vector&lt;int&gt;&amp; nums) &#123;
+        int result &#x3D; INT_MAX;
+        for(int i&#x3D;0;i&lt;nums.size();i++)&#123;
+            if(nums[i]&gt;&#x3D; target)&#123;
+                result &#x3D; 1;
+                break;
+            &#125;
+            int sum &#x3D; nums[i];
+            for(int j&#x3D;i+1;j&lt;nums.size();j++)&#123;
+                sum +&#x3D; nums[j];
+                if(sum&gt;&#x3D;target)&#123;
+                    if(j-i&lt;result)result &#x3D; j-i+1;
+                    break;
+                &#125;
+            &#125;           
+        &#125;
+        return result-INT_MAX?result:0;  &#x2F;&#x2F; 考虑没找到满足条件子数组的情况
+
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="滑动窗口法"><a href="#滑动窗口法" class="headerlink" title="滑动窗口法"></a>滑动窗口法</h4><p>滑动窗口，<strong>「就是不断的调节子序列的起始位置和终止位置，从而得出我们要想的结果」</strong></p>
+<p>以下是本题使用滑动窗口的一个流程：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ciaqDnJprwv6MwIsdYLFnPSXSJ3WgSPQRf3oaBEAYc57vWs1aSc4YMjmMSawj3QQxd4A81P4XYF6sibPK0lZ1ic4w/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p>其实从动画中可以发现滑动窗口也可以理解为双指针法的一种！只不过这种解法更像是一个窗口的移动，所以叫做滑动窗口更适合一些。</p>
+<p>在本题中实现滑动窗口，主要确定如下三点：</p>
+<ul>
+<li>窗口内是什么？</li>
+<li>如何移动窗口的起始位置？</li>
+<li>如何移动窗口的结束位置？</li>
+</ul>
+<p>窗口就是 满足其和 ≥ s 的长度最小的 连续 子数组。</p>
+<p>窗口的起始位置如何移动：如果当前窗口的值大于s了，窗口就要向前移动了（也就是该缩小了）。</p>
+<p>窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，窗口的起始位置设置为数组的起始位置就可以了。</p>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -&gt; int:
+        result &#x3D; sys.maxsize # 获取python里int最大值
+        sum_ &#x3D; 0
+        i &#x3D; 0
+        for j in range(len(nums)):
+            sum_ +&#x3D; nums[j]
+            while sum_&gt;&#x3D;target:
+                subLength &#x3D; j-i+1
+                result &#x3D; subLength if subLength&lt;result else result
+                sum_ -&#x3D; nums[i]
+                i +&#x3D; 1
+        result &#x3D; 0 if result &#x3D;&#x3D; sys.maxsize else result
+        return result<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上一题的双指针法完全可以看成是滑动窗口的一种。</p>
+<ul>
+<li><p>窗口内是满足条件的值（val）</p>
+</li>
+<li><p>窗口起始位置更新条件是当窗口内要出现不满足条件的值(nums[fasterPoint]!=val)</p>
+</li>
+<li><p>更新语句：把fasterPoint的值给slowPoint完成一次删除覆盖的操作（但是还是快慢指针差还是表示窗口里曾经有的满足条件的值）</p>
+</li>
+<li><p><strong>差别：本题在判断更新的条件使用的是while，这是因为更新一次之后窗口内仍可能大于要求的s，需要继续更新起始位置，但是上一题看成滑动窗口后满足条件后只需更新一次即可，因此条件用的是if</strong></p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -499,89 +960,6 @@ e<span class="token punctuation">,</span>f
       <tags>
         <tag>Python</tag>
         <tag>NumPy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode刷题笔记-滑动窗口法</title>
-    <url>/2021/03/24/leetcode-shua-ti-bi-ji-shu-zu-pian-hua-dong-chuang-kou-fa/</url>
-    <content><![CDATA[<h4 id="209题-长度最小的连续子数组"><a href="#209题-长度最小的连续子数组" class="headerlink" title="209题 长度最小的连续子数组"></a>209题 长度最小的连续子数组</h4><p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p>
-<p>找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。</p>
-<p>示例 1：</p>
-<p>输入：target = 7, nums = [2,3,1,2,4,3]<br>输出：2<br>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</p>
-<p>示例 2：</p>
-<p>输入：target = 4, nums = [1,4,4]<br>输出：1</p>
-<p>示例 3：</p>
-<p>输入：target = 11, nums = [1,1,1,1,1,1,1,1]<br>输出：0</p>
-<h4 id="暴力求解"><a href="#暴力求解" class="headerlink" title="暴力求解"></a>暴力求解</h4><p>直接两个for循环找满足条件的子数组就好了，<strong>注意暴力求解还是后面的滑动窗口，都要考虑没找到子数组的情况</strong></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    int minSubArrayLen(int target, vector&lt;int&gt;&amp; nums) &#123;
-        int result &#x3D; INT_MAX;
-        for(int i&#x3D;0;i&lt;nums.size();i++)&#123;
-            if(nums[i]&gt;&#x3D; target)&#123;
-                result &#x3D; 1;
-                break;
-            &#125;
-            int sum &#x3D; nums[i];
-            for(int j&#x3D;i+1;j&lt;nums.size();j++)&#123;
-                sum +&#x3D; nums[j];
-                if(sum&gt;&#x3D;target)&#123;
-                    if(j-i&lt;result)result &#x3D; j-i+1;
-                    break;
-                &#125;
-            &#125;           
-        &#125;
-        return result-INT_MAX?result:0;  &#x2F;&#x2F; 考虑没找到满足条件子数组的情况
-
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="滑动窗口法"><a href="#滑动窗口法" class="headerlink" title="滑动窗口法"></a>滑动窗口法</h4><p>滑动窗口，<strong>「就是不断的调节子序列的起始位置和终止位置，从而得出我们要想的结果」</strong></p>
-<p>以下是本题使用滑动窗口的一个流程：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ciaqDnJprwv6MwIsdYLFnPSXSJ3WgSPQRf3oaBEAYc57vWs1aSc4YMjmMSawj3QQxd4A81P4XYF6sibPK0lZ1ic4w/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
-<p>其实从动画中可以发现滑动窗口也可以理解为双指针法的一种！只不过这种解法更像是一个窗口的移动，所以叫做滑动窗口更适合一些。</p>
-<p>在本题中实现滑动窗口，主要确定如下三点：</p>
-<ul>
-<li>窗口内是什么？</li>
-<li>如何移动窗口的起始位置？</li>
-<li>如何移动窗口的结束位置？</li>
-</ul>
-<p>窗口就是 满足其和 ≥ s 的长度最小的 连续 子数组。</p>
-<p>窗口的起始位置如何移动：如果当前窗口的值大于s了，窗口就要向前移动了（也就是该缩小了）。</p>
-<p>窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，窗口的起始位置设置为数组的起始位置就可以了。</p>
-<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -&gt; int:
-        result &#x3D; sys.maxsize # 获取python里int最大值
-        sum_ &#x3D; 0
-        i &#x3D; 0
-        for j in range(len(nums)):
-            sum_ +&#x3D; nums[j]
-            while sum_&gt;&#x3D;target:
-                subLength &#x3D; j-i+1
-                result &#x3D; subLength if subLength&lt;result else result
-                sum_ -&#x3D; nums[i]
-                i +&#x3D; 1
-        result &#x3D; 0 if result &#x3D;&#x3D; sys.maxsize else result
-        return result<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>上一题的双指针法完全可以看成是滑动窗口的一种。</p>
-<ul>
-<li><p>窗口内是满足条件的值（val）</p>
-</li>
-<li><p>窗口起始位置更新条件是当窗口内要出现不满足条件的值(nums[fasterPoint]!=val)</p>
-</li>
-<li><p>更新语句：把fasterPoint的值给slowPoint完成一次删除覆盖的操作（但是还是快慢指针差还是表示窗口里曾经有的满足条件的值）</p>
-</li>
-<li><p><strong>差别：本题在判断更新的条件使用的是while，这是因为更新一次之后窗口内仍可能大于要求的s，需要继续更新起始位置，但是上一题看成滑动窗口后满足条件后只需更新一次即可，因此条件用的是if</strong></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>

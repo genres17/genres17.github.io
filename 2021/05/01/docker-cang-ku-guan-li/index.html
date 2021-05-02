@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker学习笔记一Docker核心技术之镜像, genres的小窝">
+    <meta name="keywords" content="Docker学习笔记一Docker核心技术之仓库, genres的小窝">
     <meta name="description" content="这里是genres的小窝，记录着genres的随笔">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Docker学习笔记一Docker核心技术之镜像 | genres的小窝</title>
+    <title>Docker学习笔记一Docker核心技术之仓库 | genres的小窝</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/bitbug_favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Docker学习笔记一Docker核心技术之镜像</h1>
+                    <h1 class="description center-align post-title">Docker学习笔记一Docker核心技术之仓库</h1>
                 </div>
             </div>
         </div>
@@ -452,28 +452,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-09
+                    2021-05-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-09
+                    2021-05-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    937
+                    471
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -496,125 +496,36 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h3><p>Docker镜像是一个Docker的可执行文件，其中包括运行应用程序时所需的所有代码内容，依赖库。环境变量和配置文件等。一个镜像可以创建一个或者多个容器。</p>
-<h4 id="Docker镜像搜索"><a href="#Docker镜像搜索" class="headerlink" title="Docker镜像搜索"></a>Docker镜像搜索</h4><ul>
-<li><p>作用： 搜索Docker Hub(镜像仓库)上的镜像信息</p>
+                <h5 id="无认证仓库搭建"><a href="#无认证仓库搭建" class="headerlink" title="无认证仓库搭建"></a>无认证仓库搭建</h5><ol>
+<li><p>首先要在服务器上安装docker并且下载registry仓库，使用<strong>docker pull registry</strong>实现</p>
 </li>
-<li><p>命令： docker search  镜像名称</p>
-</li>
-<li><p>命令参数： -f                        根据提供格式选择结果</p>
-</li>
-</ul>
-<p>​                    -format string  使用的是go语言格式化方法</p>
-<p>​                    -limit   int           展示最大结果数量</p>
-<p>​                    -no-trunc            镜像信息内容全部展示</p>
-<p><strong>该命令功能其实也可以去Docker Hub官网上直接找，只是用于看一个初略结果</strong></p>
-<p>例如搜索centos镜像：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker search centos<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li><p>在服务器上，启动registry(它就是一个普通镜像)</p>
+<pre class="line-numbers language-none"><code class="language-none">docker run -d -ti --restart always --name my_registry -p 8000:5000 -v &#x2F;root&#x2F;xxx:&#x2F;var&#x2F;lib&#x2F;registry<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>使用可选参数进行查询结果限制（是否是官方镜像）</p>
-<pre class="line-numbers language-none"><code class="language-none">docker search cent -f is-official&#x3D;true<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>注：automated一栏带ok的表示的是docker file打包的内容，不带的则表示是完整的镜像</p>
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937679/my_blog/docker%E9%95%9C%E5%83%8F%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C_dfyoza.png" alt="docker镜像搜索结果"></p>
-<h4 id="Docker本地查看和下载"><a href="#Docker本地查看和下载" class="headerlink" title="Docker本地查看和下载"></a>Docker本地查看和下载</h4><h5 id="镜像查看-docker-images-docker-image-ls"><a href="#镜像查看-docker-images-docker-image-ls" class="headerlink" title="镜像查看 -docker images/docker image ls"></a>镜像查看 -docker images/docker image ls</h5><ul>
-<li><p>作用：列出本地镜像</p>
 </li>
-<li><p>命令：docker images/docker image ls</p>
-</li>
-<li><p>命令参数： -a                  显示所有镜像</p>
-</li>
-</ul>
-<p>​                    -q                  只显示镜像ID</p>
-<p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker image ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937654/my_blog/docker%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F_x7vlkf.png" alt="docker查看本地镜像"></p>
-<p><strong>注：tag是镜像的版本号，同一个镜像可能有多个不同tag,image ID才是Docker唯一区分镜像的标识</strong></p>
-<p>此外，在搜索本地镜像的时候，是支持指定tag查询的，比如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker images ubuntu:18.04<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>还支持模糊查询，<strong>但是注意，如果本地镜像存在同名的情况，直接模糊查询就会失效，必须在模糊查询后指定tag才能进行模糊查询</strong></p>
-<h5 id="镜像下载"><a href="#镜像下载" class="headerlink" title="镜像下载"></a>镜像下载</h5><ul>
-<li><p>作用：从Docker Hub上下载镜像</p>
-</li>
-<li><p>命令： docker pull 镜像名称</p>
-</li>
-<li><p>命令参数： -a 拉取所有tagged镜像</p>
-</li>
-</ul>
-<p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker pull java<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937668/my_blog/docker%E9%95%9C%E5%83%8F%E6%8B%89%E5%8F%96_jnejk6.png" alt="docker镜像拉取"></p>
-<h4 id="镜像删除"><a href="#镜像删除" class="headerlink" title="镜像删除"></a>镜像删除</h4><ul>
-<li><p>作用：将本地的一个或者多个镜像删除</p>
-</li>
-<li><p>命令格式： docker rmi 镜像1 镜像2…</p>
-</li>
-</ul>
-<p><strong>注：这里的镜像可以是镜像名称，也可以是镜像id(只要输入能唯一区分部分即可)</strong></p>
-<p>可选参数：-f               强制删除</p>
-<h4 id="镜像保存备份"><a href="#镜像保存备份" class="headerlink" title="镜像保存备份"></a>镜像保存备份</h4><ul>
-<li><p>作用：将本地的一个或多个镜像打包保存到本地</p>
-</li>
-<li><p>命令格式： docker save 镜像1 镜像2…</p>
-</li>
-</ul>
-<p><strong>注：同docker rmi一样，可以输入多个镜像，可以是镜像名或者是镜像id</strong></p>
-<p>命令参数： -o            打包后生成的指定文件名</p>
-<p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker save centos -o demo.tar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937658/my_blog/docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85_znksoz.png" alt="docker镜像打包"></p>
-<h4 id="镜像载入"><a href="#镜像载入" class="headerlink" title="镜像载入"></a>镜像载入</h4><ul>
-<li><p>作用：将打包好的镜像包载入使用</p>
-</li>
-<li><p>命令格式：docker load -i 包名</p>
-</li>
-<li><p>命令参数：-i                      代替stdin，从该文件中读入镜像</p>
-</li>
-</ul>
-<p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker load -i demo.tar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617938966/my_blog/docker%E9%95%9C%E5%83%8F%E8%BD%BD%E5%85%A5_cwmqpy.png" alt="docker镜像载入"></p>
-<p><strong>注：在镜像导出后，会发现有些镜像的名称和tag是none,这是因为镜像打包的时候没有指定名称和版本（只是用了镜像id),这样只有用镜像重命名来处理</strong></p>
-<h4 id="镜像重命名"><a href="#镜像重命名" class="headerlink" title="镜像重命名"></a>镜像重命名</h4><ul>
-<li><p>作用：若镜像名非none，则是对现有镜像加一个新的引用（原引用保留），否则就是创建引用指向为none的镜像</p>
-</li>
-<li><p>命令格式：docker tag 旧镜像名（none的镜像写id） 新镜像名</p>
-</li>
-</ul>
-<p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker tag centos centos:8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937663/my_blog/docker%E9%95%9C%E5%83%8F%E6%94%B9%E5%90%8D_cg92hz.png" alt="docker镜像改名"></p>
-<h4 id="镜像信息查询"><a href="#镜像信息查询" class="headerlink" title="镜像信息查询"></a>镜像信息查询</h4><ul>
-<li><p>作用：查询目标镜像的信息（json格式）</p>
-</li>
-<li><p>命令格式：docker inspect -f “” 镜像名</p>
-</li>
-<li><p>命令参数：-f                       go语言格式化字符串，这里有固定写法，如上面所示，json后面跟具体key要有个空格，字符串要记得加“”</p>
-</li>
-</ul>
-<p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker inspect -f &quot;&#123;&#123;json .Os&#125;&#125;&quot; centos<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937687/my_blog/docker%E9%95%9C%E5%83%8F%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2_ggk2rq.png" alt="docker镜像信息查询"></p>
-<h5 id="镜像历史信息查询"><a href="#镜像历史信息查询" class="headerlink" title="镜像历史信息查询"></a>镜像历史信息查询</h5><ul>
-<li><p>作用：查询镜像历史分层信息</p>
-</li>
-<li><p>命令格式： docker history 镜像名</p>
-</li>
-<li><p>命令参数： - no-trunc                      不缩略显示</p>
-</li>
-</ul>
-<p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker history centos<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937674/my_blog/docker%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E4%BF%A1%E6%81%AF_solae0.png" alt="docker镜像历史信息"></p>
-<h4 id="镜像常用命令总结"><a href="#镜像常用命令总结" class="headerlink" title="镜像常用命令总结"></a>镜像常用命令总结</h4><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937641/my_blog/%E9%95%9C%E5%83%8F%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93_etwrh3.png" alt="镜像常用命令总结"></p>
+</ol>
+<p><strong>注：–restart的作用是当docker重启时，指定该参数的容器也会跟着一起重启，否则还得手动启动才行，-p的第一个端口是宿主机对外暴露接口，是可以更改的，5000是固定接口，-v数据卷后面的容器路径也是固定的</strong></p>
+<ol start="3">
+<li>使用浏览器或者curl 服务器ip:8000/v2/_catalog 查看当前仓库已经存在镜像</li>
+</ol>
+<h5 id="私有仓库镜像上传"><a href="#私有仓库镜像上传" class="headerlink" title="私有仓库镜像上传"></a>私有仓库镜像上传</h5><ol>
+<li>利用docker tag IMAGE 服务器IP：端口/IMAGE_NAME</li>
+<li>docker push 服务器IP：端口/IMAGE_NAME</li>
+</ol>
+<p><strong>注：这里1的重命名必须按照上面规则来做，另外在使用2时可能会发生https错误，这是因为镜像服务器那边没有进行https认证导致的，若不想使用https,则需要在/etc/docker/daemon.json文件里添加“insecure-registries”:[“服务器IP：端口”]，然后重启docker</strong></p>
+<h5 id="私有仓库镜像下载"><a href="#私有仓库镜像下载" class="headerlink" title="私有仓库镜像下载"></a>私有仓库镜像下载</h5><p>docker pull 服务器IP：端口/IMAGE_NAME进行下载</p>
+<h5 id="有认证的私人仓库"><a href="#有认证的私人仓库" class="headerlink" title="有认证的私人仓库"></a>有认证的私人仓库</h5><ol>
+<li>删除原先无认证的仓库docker rm -f xxxx</li>
+<li>创建存放认证的用户名密码文件夹 mkdir /xxxx/auth-p</li>
+<li>创建密码验证文件docker run –entrypoint htpasswd registry -Bbn 用户名 密码&gt;/xxxx/auth/htpasswd</li>
+<li>重启创建镜像</li>
+</ol>
+<p>​    docker run -d -p 8000:5000 –restart=always –name docker-registry -v /xxxx/registry:/var/lib/registry -v /xxxx/auth:/auth -e”REGISTRY_AUTH=htpasswd” -e “REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm” -e “REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd”registry</p>
+<h5 id="有认证的仓库镜像上传与下载"><a href="#有认证的仓库镜像上传与下载" class="headerlink" title="有认证的仓库镜像上传与下载"></a>有认证的仓库镜像上传与下载</h5><ol>
+<li>先进行登陆操作docker login -u 用户名 -p 密码 服务器IP：端口</li>
+<li>执行pull/push命令，同上</li>
+<li>登出操作docker logout 服务器IP：端口</li>
+</ol>
 
                 
             </div>
@@ -641,7 +552,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://genres17.github.io/2021/04/09/docker-he-xin-ji-zhu-jing-xiang/">https://genres17.github.io/2021/04/09/docker-he-xin-ji-zhu-jing-xiang/</a>
+                    <a href="https://genres17.github.io/2021/05/01/docker-cang-ku-guan-li/">https://genres17.github.io/2021/05/01/docker-cang-ku-guan-li/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -847,7 +758,7 @@
         repo: 'Blog-Comment-storage',
         owner: 'genres17',
         admin: "genres17",
-        id: '2021-04-09T11-09-26',
+        id: '2021-05-01T23-18-22',
         distractionFreeMode: false  // Facebook-like distraction free mode
 		createIssueManually: true
     });
@@ -876,17 +787,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/01/docker-he-xin-ji-zhu-zhi-rong-qi/">
+                <a href="/2021/05/01/docker-cang-ku-guan-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Docker学习笔记一Docker核心技术之容器">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Docker学习笔记一Docker核心技术之仓库">
                         
-                        <span class="card-title">Docker学习笔记一Docker核心技术之容器</span>
+                        <span class="card-title">Docker学习笔记一Docker核心技术之仓库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -896,9 +808,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -911,6 +823,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -921,13 +834,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/05/docker-xue-xi-1/">
+                <a href="/2021/05/01/docker-shu-ju-juan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker学习笔记一概述">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Docker学习笔记一Docker数据卷">
                         
-                        <span class="card-title">Docker学习笔记一概述</span>
+                        <span class="card-title">Docker学习笔记一Docker数据卷</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -938,7 +851,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-01
                             </span>
                         <span class="publish-author">
                             

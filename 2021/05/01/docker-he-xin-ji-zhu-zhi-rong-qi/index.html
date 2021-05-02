@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker学习笔记一Docker核心技术之镜像, genres的小窝">
+    <meta name="keywords" content="Docker学习笔记一Docker核心技术之容器, genres的小窝">
     <meta name="description" content="这里是genres的小窝，记录着genres的随笔">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Docker学习笔记一Docker核心技术之镜像 | genres的小窝</title>
+    <title>Docker学习笔记一Docker核心技术之容器 | genres的小窝</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/bitbug_favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Docker学习笔记一Docker核心技术之镜像</h1>
+                    <h1 class="description center-align post-title">Docker学习笔记一Docker核心技术之容器</h1>
                 </div>
             </div>
         </div>
@@ -452,28 +452,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-09
+                    2021-05-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-09
+                    2021-05-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    937
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -496,125 +496,139 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h3><p>Docker镜像是一个Docker的可执行文件，其中包括运行应用程序时所需的所有代码内容，依赖库。环境变量和配置文件等。一个镜像可以创建一个或者多个容器。</p>
-<h4 id="Docker镜像搜索"><a href="#Docker镜像搜索" class="headerlink" title="Docker镜像搜索"></a>Docker镜像搜索</h4><ul>
-<li><p>作用： 搜索Docker Hub(镜像仓库)上的镜像信息</p>
-</li>
-<li><p>命令： docker search  镜像名称</p>
-</li>
-<li><p>命令参数： -f                        根据提供格式选择结果</p>
-</li>
+                <h4 id="docker容器概述"><a href="#docker容器概述" class="headerlink" title="docker容器概述"></a>docker容器概述</h4><p>容器：容器是一种轻量级，可移植并将应用程序打包的技术，使得程序可以在任何地方以相同的方式运行。</p>
+<ul>
+<li>docker将镜像运行起来的就是容器，容器相当于动态的镜像，类似exe文件和运行程序的关系</li>
+<li>容器具备一定生命周期</li>
+<li>可以使用docker ps命令查看容器</li>
 </ul>
-<p>​                    -format string  使用的是go语言格式化方法</p>
-<p>​                    -limit   int           展示最大结果数量</p>
-<p>​                    -no-trunc            镜像信息内容全部展示</p>
-<p><strong>该命令功能其实也可以去Docker Hub官网上直接找，只是用于看一个初略结果</strong></p>
-<p>例如搜索centos镜像：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker search centos<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>使用可选参数进行查询结果限制（是否是官方镜像）</p>
-<pre class="line-numbers language-none"><code class="language-none">docker search cent -f is-official&#x3D;true<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>注：automated一栏带ok的表示的是docker file打包的内容，不带的则表示是完整的镜像</p>
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937679/my_blog/docker%E9%95%9C%E5%83%8F%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C_dfyoza.png" alt="docker镜像搜索结果"></p>
-<h4 id="Docker本地查看和下载"><a href="#Docker本地查看和下载" class="headerlink" title="Docker本地查看和下载"></a>Docker本地查看和下载</h4><h5 id="镜像查看-docker-images-docker-image-ls"><a href="#镜像查看-docker-images-docker-image-ls" class="headerlink" title="镜像查看 -docker images/docker image ls"></a>镜像查看 -docker images/docker image ls</h5><ul>
-<li><p>作用：列出本地镜像</p>
-</li>
-<li><p>命令：docker images/docker image ls</p>
-</li>
-<li><p>命令参数： -a                  显示所有镜像</p>
-</li>
+<h5 id="docker容器与虚拟机相同点"><a href="#docker容器与虚拟机相同点" class="headerlink" title="docker容器与虚拟机相同点"></a>docker容器与虚拟机相同点</h5><ul>
+<li>容器和虚拟机一样，都需要裸机的物理资源分配（内存，cpu)</li>
+<li>容器和虚拟机的生命周期比较相似，都需要经过创建、运行、暂停、关闭</li>
+<li>容器和虚拟机都能安装各种应用，如redis等</li>
+<li>容器和虚拟机都会在主机操作系统下创建文件夹保存信息</li>
 </ul>
-<p>​                    -q                  只显示镜像ID</p>
+<h5 id="docker容器与虚拟机"><a href="#docker容器与虚拟机" class="headerlink" title="docker容器与虚拟机"></a>docker容器与虚拟机</h5><ul>
+<li>容器是直接运行在 宿主机上的，本质上是宿主机一系列进程集合，但是虚拟机是在虚拟化技术基础上运行完整操作系统的</li>
+<li>docker是轻量级的，虚拟机是重量级的，虚拟机的花费要更大，docker则很小。</li>
+</ul>
+<h5 id="虚拟机的生命周期"><a href="#虚拟机的生命周期" class="headerlink" title="虚拟机的生命周期"></a>虚拟机的生命周期</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837220/my_blog/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F_h1cytj.png" alt="虚拟机生命周期"></p>
+<ul>
+<li>running和paused状态下虚拟机还在运行下，对于虚拟机文件删除只能采用强制删除方式，其他情况则可以采用正常删除手段</li>
+</ul>
+<h5 id="docker容器的生命周期"><a href="#docker容器的生命周期" class="headerlink" title="docker容器的生命周期"></a>docker容器的生命周期</h5><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837354/my_blog/docker%E5%AE%B9%E5%99%A8%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F_dfofpx.png" alt="docker容器生命周期"></p>
+<h4 id="docker容器生命周期管理"><a href="#docker容器生命周期管理" class="headerlink" title="docker容器生命周期管理"></a>docker容器生命周期管理</h4><h5 id="容器创建"><a href="#容器创建" class="headerlink" title="容器创建"></a>容器创建</h5><p>作用：利用镜像创建一个待使用的容器</p>
+<p>命令格式：docker create [OPTIONS] IMAGE [COMMAND] [ARG…]</p>
+<p>常用参数（这个参数太多了）：</p>
+<p>-t           分配一个虚拟终端</p>
+<p>-i            使用stdin打开</p>
+<p>–name  为创建的容器起个别名</p>
+<p><strong>注：[COMMAND]和[ARG..]指的是可选的image里的命令和可选参数，如image是Ubuntu，command可以使用ls -al，这样生成的容器会默认执行该命令（初始化执行），如果不指定该命令，则会执行默认的，要查看默认命令，通过docker inspect命令查看cmd项的值。参数-t,-i一般一并使用，因为打开的镜像内需要使用终端操作，不加会导致打开失败</strong></p>
 <p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker image ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">docker create -ti centos python3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937654/my_blog/docker%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F_x7vlkf.png" alt="docker查看本地镜像"></p>
-<p><strong>注：tag是镜像的版本号，同一个镜像可能有多个不同tag,image ID才是Docker唯一区分镜像的标识</strong></p>
-<p>此外，在搜索本地镜像的时候，是支持指定tag查询的，比如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker images ubuntu:18.04<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>还支持模糊查询，<strong>但是注意，如果本地镜像存在同名的情况，直接模糊查询就会失效，必须在模糊查询后指定tag才能进行模糊查询</strong></p>
-<h5 id="镜像下载"><a href="#镜像下载" class="headerlink" title="镜像下载"></a>镜像下载</h5><ul>
-<li><p>作用：从Docker Hub上下载镜像</p>
-</li>
-<li><p>命令： docker pull 镜像名称</p>
-</li>
-<li><p>命令参数： -a 拉取所有tagged镜像</p>
-</li>
-</ul>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837510/my_blog/docker%E5%AE%B9%E5%99%A8%E5%88%9B%E5%BB%BA_e7h6wq.png" alt="容器创建"></p>
+<h5 id="容器删除"><a href="#容器删除" class="headerlink" title="容器删除"></a>容器删除</h5><p>作用：删除一个或者多个容器</p>
+<p>命令格式：docker rm [OPTIONS] 容器1，容器2</p>
+<p>常用参数：</p>
+<p> -f                  强制删除容器</p>
 <p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker pull java<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">docker rm -f centos_python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937668/my_blog/docker%E9%95%9C%E5%83%8F%E6%8B%89%E5%8F%96_jnejk6.png" alt="docker镜像拉取"></p>
-<h4 id="镜像删除"><a href="#镜像删除" class="headerlink" title="镜像删除"></a>镜像删除</h4><ul>
-<li><p>作用：将本地的一个或者多个镜像删除</p>
-</li>
-<li><p>命令格式： docker rmi 镜像1 镜像2…</p>
-</li>
-</ul>
-<p><strong>注：这里的镜像可以是镜像名称，也可以是镜像id(只要输入能唯一区分部分即可)</strong></p>
-<p>可选参数：-f               强制删除</p>
-<h4 id="镜像保存备份"><a href="#镜像保存备份" class="headerlink" title="镜像保存备份"></a>镜像保存备份</h4><ul>
-<li><p>作用：将本地的一个或多个镜像打包保存到本地</p>
-</li>
-<li><p>命令格式： docker save 镜像1 镜像2…</p>
-</li>
-</ul>
-<p><strong>注：同docker rmi一样，可以输入多个镜像，可以是镜像名或者是镜像id</strong></p>
-<p>命令参数： -o            打包后生成的指定文件名</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837561/my_blog/%E5%AE%B9%E5%99%A8%E5%88%A0%E9%99%A4_rgrrug.png" alt="容器删除"></p>
+<h5 id="容器启动"><a href="#容器启动" class="headerlink" title="容器启动"></a>容器启动</h5><p>作用：从创建状态或者退出状态启动一个容器</p>
+<p>命令格式：docker start [OPTIONS] 容器1，容器2</p>
+<p>常用参数：</p>
+<p>-a                将容器启动的内容标准输出到当前控制台</p>
+<p>-i                 把当前标准输入传递给容器</p>
+<p>–rm           在容器停止后就立即删除容器</p>
+<p>例如:</p>
+<pre class="line-numbers language-none"><code class="language-none">docker create -a centos_ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837788/my_blog/%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A81_mz2wpy.png" alt="容器启动1"></p>
+<p>**注：上图所示的是启动centos并执行ls -als的情况，如果启动的时候不加-a参数，则不会将容器的输出输出到当前终端上，若是还想对容器里的终端进行操作，则启动还必须加上-i **</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837850/my_blog/docker%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A82_rxvflg.png" alt="容器启动2"></p>
+<h5 id="容器运行"><a href="#容器运行" class="headerlink" title="容器运行"></a>容器运行</h5><p>作用：创建并启动容器</p>
+<p>命令格式：docker run [OPTION] 镜像 [COMMAND] [ARG]</p>
+<p>常用参数：-ti （同create）</p>
 <p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker save centos -o demo.tar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">docker run -ti centos python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937658/my_blog/docker%E9%95%9C%E5%83%8F%E6%89%93%E5%8C%85_znksoz.png" alt="docker镜像打包"></p>
-<h4 id="镜像载入"><a href="#镜像载入" class="headerlink" title="镜像载入"></a>镜像载入</h4><ul>
-<li><p>作用：将打包好的镜像包载入使用</p>
-</li>
-<li><p>命令格式：docker load -i 包名</p>
-</li>
-<li><p>命令参数：-i                      代替stdin，从该文件中读入镜像</p>
-</li>
-</ul>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619837895/my_blog/docker%E5%AE%B9%E5%99%A8%E8%BF%90%E8%A1%8C_wkand3.png" alt="容器运行"></p>
+<p>若加上–rm选项，则在停止容器后就删除该容器，如下所示：</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838159/my_blog/docker%E5%AE%B9%E5%99%A8%E5%88%9B%E5%BB%BA%E5%81%9C%E6%AD%A2%E5%88%A0%E9%99%A4_svgyqc.png" alt="容器创建删除"></p>
+<h6 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h6><ol>
+<li>docker run xxx 等价于 docker create+docker start -a</li>
+<li>docker run -d 等价于docker create +docker start(后台运行，只要加了-d一律都是后台运行了)</li>
+<li>拿不准想要控制态输出，就写docker run -ti xxx</li>
+</ol>
+<h5 id="容器关闭"><a href="#容器关闭" class="headerlink" title="容器关闭"></a>容器关闭</h5><p>作用：关闭一个运行的容器(若不指定-t时间则默认等10s)</p>
+<p>命令格式：docker stop [OPTION] 容器名</p>
+<p>可选参数：</p>
+<p>-t                   后面接int数字，表示在第x秒后执行关闭操作</p>
 <p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker load -i demo.tar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">docker stop -t 511 8514<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617938966/my_blog/docker%E9%95%9C%E5%83%8F%E8%BD%BD%E5%85%A5_cwmqpy.png" alt="docker镜像载入"></p>
-<p><strong>注：在镜像导出后，会发现有些镜像的名称和tag是none,这是因为镜像打包的时候没有指定名称和版本（只是用了镜像id),这样只有用镜像重命名来处理</strong></p>
-<h4 id="镜像重命名"><a href="#镜像重命名" class="headerlink" title="镜像重命名"></a>镜像重命名</h4><ul>
-<li><p>作用：若镜像名非none，则是对现有镜像加一个新的引用（原引用保留），否则就是创建引用指向为none的镜像</p>
-</li>
-<li><p>命令格式：docker tag 旧镜像名（none的镜像写id） 新镜像名</p>
-</li>
-</ul>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838197/my_blog/docker%E5%AE%B9%E5%99%A8%E5%85%B3%E9%97%AD_utcvul.png" alt="容器关闭"></p>
+<h5 id="容器强制关闭（不推荐使用，除非真的关不上容器）"><a href="#容器强制关闭（不推荐使用，除非真的关不上容器）" class="headerlink" title="容器强制关闭（不推荐使用，除非真的关不上容器）"></a>容器强制关闭（不推荐使用，除非真的关不上容器）</h5><p>作用：强制关闭容器</p>
+<p>命令格式：docker kill [OPTION] 容器名</p>
+<p>可选参数：</p>
+<p>-s                   给出kill的信号，具体参考如下Linux信号</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838247/my_blog/Linux_kill%E4%BF%A1%E5%8F%B7_p06mwq.png" alt="Linux_kill信号"></p>
+<p><strong>注：默认情况下，docker stop命令先执行的是第15 SIGTERM信号，处理完后再执行SIGKILL信号，docker kill直接执行的是SIGKILL信号</strong></p>
 <p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker tag centos centos:8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">docker kill 9091<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937663/my_blog/docker%E9%95%9C%E5%83%8F%E6%94%B9%E5%90%8D_cg92hz.png" alt="docker镜像改名"></p>
-<h4 id="镜像信息查询"><a href="#镜像信息查询" class="headerlink" title="镜像信息查询"></a>镜像信息查询</h4><ul>
-<li><p>作用：查询目标镜像的信息（json格式）</p>
-</li>
-<li><p>命令格式：docker inspect -f “” 镜像名</p>
-</li>
-<li><p>命令参数：-f                       go语言格式化字符串，这里有固定写法，如上面所示，json后面跟具体key要有个空格，字符串要记得加“”</p>
-</li>
-</ul>
+<h5 id="容器暂停-继续"><a href="#容器暂停-继续" class="headerlink" title="容器暂停/继续"></a>容器暂停/继续</h5><p>作用：暂停容器运行/解除暂停状态</p>
+<p>命令格式：docker pause xxx/docker unpause xxxx</p>
 <p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker inspect -f &quot;&#123;&#123;json .Os&#125;&#125;&quot; centos<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">docker pause 4050
+docker unpause 4050<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937687/my_blog/docker%E9%95%9C%E5%83%8F%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2_ggk2rq.png" alt="docker镜像信息查询"></p>
-<h5 id="镜像历史信息查询"><a href="#镜像历史信息查询" class="headerlink" title="镜像历史信息查询"></a>镜像历史信息查询</h5><ul>
-<li><p>作用：查询镜像历史分层信息</p>
-</li>
-<li><p>命令格式： docker history 镜像名</p>
-</li>
-<li><p>命令参数： - no-trunc                      不缩略显示</p>
-</li>
-</ul>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838662/my_blog/docker%E5%AE%B9%E5%99%A8%E6%9A%82%E5%81%9C_aohgdw.png" alt="容器暂停"></p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838740/my_blog/docker%E5%AE%B9%E5%99%A8%E8%A7%A3%E9%99%A4%E6%9A%82%E5%81%9C_ekfmhe.png" alt="容器解除暂停"></p>
+<h5 id="容器重启"><a href="#容器重启" class="headerlink" title="容器重启"></a>容器重启</h5><p>作用：重启容器</p>
+<p>命令格式：docker restart 容器名</p>
+<p>可选参数：</p>
+<p>-t                            在第n秒后开始重启</p>
 <p>例如：</p>
-<pre class="line-numbers language-none"><code class="language-none">docker history centos<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">docker restart 5112<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937674/my_blog/docker%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E4%BF%A1%E6%81%AF_solae0.png" alt="docker镜像历史信息"></p>
-<h4 id="镜像常用命令总结"><a href="#镜像常用命令总结" class="headerlink" title="镜像常用命令总结"></a>镜像常用命令总结</h4><p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1617937641/my_blog/%E9%95%9C%E5%83%8F%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93_etwrh3.png" alt="镜像常用命令总结"></p>
+
+
+<h5 id="docker容器信息查询"><a href="#docker容器信息查询" class="headerlink" title="docker容器信息查询"></a>docker容器信息查询</h5><p>命令同镜像信息查询</p>
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619838472/my_blog/docke%E5%AE%B9%E5%99%A8%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2_daqfgc.png" alt="容器信息查询"></p>
+<h5 id="dockers容器日志"><a href="#dockers容器日志" class="headerlink" title="dockers容器日志"></a>dockers容器日志</h5><p>这里所谓的日志，就是启动容器后指定的容器的cmd命令输出的内容</p>
+<p>命令格式：docker logs 容器名</p>
+<p>可选参数：</p>
+<p>-f                   持续输出，指那些一直有输出的日志信息</p>
+<p>-t                  带有时间的输出</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker logs -t cf92<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://res.cloudinary.com/dd3ed5whb/image/upload/v1619839003/my_blog/docker%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B_r6wmtf.png" alt="容器日志信息查看"></p>
+<h5 id="docker容器重命名"><a href="#docker容器重命名" class="headerlink" title="docker容器重命名"></a>docker容器重命名</h5><p>作用：给容器重命名</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker rename xxxx test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="容器运行时命令"><a href="#容器运行时命令" class="headerlink" title="容器运行时命令"></a>容器运行时命令</h4><p>这部分内容主要指的是，当几个容器在后台运行时，我们想要</p>
+<h5 id="容器连接"><a href="#容器连接" class="headerlink" title="容器连接"></a>容器连接</h5><p>作用：将当前终端与标准输入输出流连接</p>
+<p>命令格式：docker attach 容器名</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker attach 0857<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>注：退出容器的终端除了使用终端自带的exit外，还可以通过ctrl+d退出</strong></p>
+<h5 id="容器执行新的命令"><a href="#容器执行新的命令" class="headerlink" title="容器执行新的命令"></a>容器执行新的命令</h5><p>作用: 类似于在容器里新开了一个终端，不影响容器命令本体</p>
+<p>命令格式：docker exec -ti 容器名 命令</p>
+<p>常用参数：</p>
+<p>-d                    后台运行</p>
+<p>例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">docker exec -ti 1234 python<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
@@ -641,7 +655,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://genres17.github.io/2021/04/09/docker-he-xin-ji-zhu-jing-xiang/">https://genres17.github.io/2021/04/09/docker-he-xin-ji-zhu-jing-xiang/</a>
+                    <a href="https://genres17.github.io/2021/05/01/docker-he-xin-ji-zhu-zhi-rong-qi/">https://genres17.github.io/2021/05/01/docker-he-xin-ji-zhu-zhi-rong-qi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -847,7 +861,7 @@
         repo: 'Blog-Comment-storage',
         owner: 'genres17',
         admin: "genres17",
-        id: '2021-04-09T11-09-26',
+        id: '2021-05-01T10-40-29',
         distractionFreeMode: false  // Facebook-like distraction free mode
 		createIssueManually: true
     });
@@ -880,13 +894,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/05/01/docker-he-xin-ji-zhu-zhi-rong-qi/">
+                <a href="/2021/05/01/docker-rong-qi-yu-jing-xiang-guan-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Docker学习笔记一Docker核心技术之容器">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker学习笔记一Docker容器与镜像关系">
                         
-                        <span class="card-title">Docker学习笔记一Docker核心技术之容器</span>
+                        <span class="card-title">Docker学习笔记一Docker容器与镜像关系</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -921,13 +935,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/05/docker-xue-xi-1/">
+                <a href="/2021/04/09/docker-he-xin-ji-zhu-jing-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker学习笔记一概述">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Docker学习笔记一Docker核心技术之镜像">
                         
-                        <span class="card-title">Docker学习笔记一概述</span>
+                        <span class="card-title">Docker学习笔记一Docker核心技术之镜像</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -938,7 +952,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
                             </span>
                         <span class="publish-author">
                             
